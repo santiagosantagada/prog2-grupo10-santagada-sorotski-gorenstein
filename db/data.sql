@@ -115,3 +115,6 @@ INSERT INTO comentarios (id, idProducto, textoComentario, createdAt, updatedAt, 
 (DEFAULT, DEFAULT, "¡Mejor compra que he hecho en mucho tiempo!", DEFAULT, DEFAULT, DEFAULT),
 (DEFAULT, DEFAULT, "¡Estoy muy impresionado por la calidad de este producto!", DEFAULT, DEFAULT, DEFAULT),
 (DEFAULT, DEFAULT, "¡Increíblemente feliz con mi compra, gracias por todo!", DEFAULT, DEFAULT, DEFAULT);
+
+
+module.exports= productos
