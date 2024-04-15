@@ -1,6 +1,6 @@
 const datos = {
     usuario: {      
-        email: "joakokusa@gmail.com" ,
+        email: "luis@gmail.com" ,
         contraseña: "amodigital" ,
         fechaNacimiento: "20-10-2000" ,
         dni: "46364341" ,
