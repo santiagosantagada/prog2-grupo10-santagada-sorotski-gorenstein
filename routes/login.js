@@ -5,4 +5,4 @@ const loginController=require("../controllers/loginController");
 
 router.get("/",loginController.index)  /*ver lo de index*/
 
-/*module.exports= router;*/
+module.exports= router
