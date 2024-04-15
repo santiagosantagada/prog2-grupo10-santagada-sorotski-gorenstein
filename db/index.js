@@ -1,10 +1,10 @@
 const datos = {
-    usuario: {
-        email: "luis@gmail.com" ,
+    usuario: {      
+        email: "joakokusa@gmail.com" ,
         contraseña: "amodigital" ,
         fechaNacimiento: "20-10-2000" ,
         dni: "46364341" ,
-        fotoPerfil: "",//poner link de una foto 
+        fotoPerfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png", 
     } ,
     productos: [
         {
@@ -12,15 +12,15 @@ const datos = {
         nombre_producto: "Television" , 
         descripcion: "Televisión 60 pulgadas" ,
         comentarios: [{
-            nombre_usuario: "francisco08" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Muy caro!" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "elkusa_104" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Tiene netflix?" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "martin_hernandez" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Parece de muy buena calidad" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }]
         },
@@ -29,15 +29,15 @@ const datos = {
         nombre_producto: "Monitor" , 
         descripcion: "Monitor nuevo 144hz" ,
         comentarios: [{
-            nombre_usuario: "cusita91" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Podemos negociar el precio?" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "sorots_" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Muy buen monitor" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "santa44_" ,
+            nombre_usuario: "joacokusa" ,
             texto: "¡Increible!" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }]
         },
@@ -46,15 +46,15 @@ const datos = {
         nombre_producto: "PlayStation 5" , 
         descripcion: "Nueva PlayStation edición limitada" ,
         comentarios: [{
-            nombre_usuario: "joakito_kusin" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Es la nueva?" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "marcosgubi" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Muy buen producto!!" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "shawn_mendez" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Trae juegos??" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }]
         },
@@ -63,15 +63,15 @@ const datos = {
         nombre_producto: "Patineta eléctrica" , 
         descripcion: "Patineta eléctrica usada con dibujos únicos" ,
         comentarios: [{
-            nombre_usuario: "joaco_kusa" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Muy buenaaa" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "mia_goren" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Que buenos dibujos" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "argos2009" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Precio?" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }]
         },
@@ -80,15 +80,15 @@ const datos = {
         nombre_producto: "Bicicleta eléctrica" , 
         descripcion: "Bicicleta eléctrica 0km" ,
         comentarios: [{
-            nombre_usuario: "agustin2004" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Hay otro color?" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "tomy_fer" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Increiblee" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" } ,
             {
-            nombre_usuario: "francisco_07" ,
+            nombre_usuario: "joacokusa" ,
             texto: "Muy buena bicicleta" ,
             foto_perfil: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }]
         },
