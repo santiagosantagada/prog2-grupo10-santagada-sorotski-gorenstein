@@ -14,32 +14,31 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Resultados de búsqueda</h2>
+					<h2 class="products-title">Resultados de búsqueda para: <%=datos.productos[0].nombre_producto %> </h2>
 				</div>
-				<!-- Show the "ultimos" products -->
-				<!-- <h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
-				Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
-				////////////////
-				</h2> 
-				<p>Listado de productos</p>
-
-		<ol>
-		
-		
-				<p>Nombre: <%=productos[1].nombre_producto %>
-					<%=productos[1].imagen%>
-				</p>
-
-				
-
-			</li>
-		
-		
-		</ol>
-
-	-->
+	
+			
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/productos">
+							<figure class="product-box_image">
+								<img src="<%=datos.productos[0].imagen  %>" alt="">
+							</figure>
+							<article class="product-box_data">
+								<h2><%=datos.productos[0].nombre_producto  %></h2>
+								<p><%=datos.productos[0].descripcion%> </p>
+								<p>Comentarios: 4</p>
+							</article>
+						</a>
+					</section>
+				</div>
+			</div>
+			
+			
+		</div>
+	
 		<!-- footer -->
-		<%- include("../partials/footer") %>
+		<%- include("./partials/footer") %>
 
 		<!-- /footer -->
 	</body>
