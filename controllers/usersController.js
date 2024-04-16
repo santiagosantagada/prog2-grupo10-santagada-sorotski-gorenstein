@@ -7,7 +7,6 @@ const usersController= {
         })
     },
     profile: function(req, res){
-        console.log(datos.usuario.usuario);
         return res.render("profile", {
             datos: datos
         })

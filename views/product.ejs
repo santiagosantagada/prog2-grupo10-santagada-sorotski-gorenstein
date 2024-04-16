@@ -27,7 +27,7 @@
 					</article>
 					<div class="col-12 col-lg-4">
 						<section class="comments">
-							<% for(let i=0; i < 3; i++) { %>   
+							<% for(let i=0; i < datos.productos[0].comentarios.length ; i++) { %>   
 								
 							<article>
 								<img src="<%=datos.productos[0].comentarios[i].foto_perfil%>" alt="">
@@ -39,7 +39,7 @@
 							</article>
 							<% } %>
 						</section>
-						<form class="form" action="" method="POST">
+						<form class="form" action="/productos" method="get">
 							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 						</form>
