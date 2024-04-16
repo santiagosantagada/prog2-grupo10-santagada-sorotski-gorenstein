@@ -3,22 +3,23 @@ const datos= require("../db/index")
 const usersController= {
     register: function(req, res){
         return res.render("register", {
-            "data": datos
+            datos: datos
         })
     },
     profile: function(req, res){
+        console.log(datos.usuario.usuario);
         return res.render("profile", {
-            "data": datos
+            datos: datos
         })
     },
     profileEdit: function(req, res){
-        return res.render("profileEdit", {
-            "data": datos
+        return res.render("profile-edit", {
+            datos: datos
         })
     },
     login: function(req, res){
         return res.render("login", {
-            "data": datos
+            datos: datos
         })
     }
 }
