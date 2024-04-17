@@ -24,14 +24,14 @@
 				<% for(let i=0; i < 8; i++) { %>   
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/productos">
+						<a href="/product">
 							<figure class="product-box_image">
 								<img src="<%=datos.productos[i].imagen  %>" alt="">
 							</figure>
 							<article class="product-box_data">
 								<h2><%=datos.productos[i].nombre_producto  %></h2>
 								<p><%=datos.productos[i].descripcion%> </p>
-								<p>Comentarios: 3 </p>
+								<p>Comentarios: <%= datos.productos[i].comentarios.length %> </p>
 							</article>
 						</a>
 					</section>
@@ -50,7 +50,7 @@
 				<% for(let i=0; i < 8; i++) { %>   
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="/productos">
+							<a href="/product">
 								<figure class="product-box_image">
 									<img src="<%=datos.productos[i].imagen  %>" alt="">
 								</figure>
@@ -62,7 +62,7 @@
 							</a>
 						</section>
 					</div>
-					<% } %>
+				<% } %>
 				
 				
 			</div>
