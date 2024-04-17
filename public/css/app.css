@@ -13,10 +13,14 @@
   --green: #39b54a;
   --base-font-family: 'Montserrat', sans-serif
 }
-
+.checkbox{
+  height: 30px;
+  width: 30px;
+}
 .formulario{
   margin: 10px;
   padding: 5px;
+ 
 }
 
 .enviar{
