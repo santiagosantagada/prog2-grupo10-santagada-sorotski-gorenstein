@@ -18,7 +18,7 @@
   width: 30px;
 }
 .formulario{
-  margin: 10px;
+  margin: 8px;
   padding: 5px;
  
 }
@@ -177,10 +177,7 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+
   height: 500px;
 }
 
