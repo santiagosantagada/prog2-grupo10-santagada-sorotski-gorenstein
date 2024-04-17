@@ -57,7 +57,7 @@
 								<article class="product-box_data">
 									<h2><%=datos.productos[i].nombre_producto  %></h2>
 									<p><%=datos.productos[i].descripcion%> </p>
-									<p>Comentarios: 3</p>
+									<p>Comentarios: <%= datos.productos[i].comentarios.length %></p>
 								</article>
 							</a>
 						</section>

@@ -39,7 +39,7 @@
 		<!-- /Datos del usuario -->
 
 		<!-- Mis productos -->
-		<div class="container products-wrapper"></div>
+		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
 					<h2 class="products-title">Mis productos</h2>
@@ -55,7 +55,7 @@
 								<article class="product-box_data">
 									<h2><%=datos.productos[i].nombre_producto  %></h2>
 									<p><%=datos.productos[i].descripcion%> </p>
-									<p>Comentarios: 4</p>
+									<p>Comentarios: <%= datos.productos[i].comentarios.length %></p>
 								</article>
 							</a>
 						</section>
@@ -64,6 +64,7 @@
 				
 				
 			</div>
+		</div>
 
 		
 		</div>
