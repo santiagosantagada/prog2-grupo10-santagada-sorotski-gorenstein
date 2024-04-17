@@ -1,5 +1,6 @@
 /*====== Fonts ======*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 /*====== Variables ======*/
@@ -10,13 +11,31 @@
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Montserrat', sans-serif
 }
 
+.formulario{
+  margin: 10px;
+  padding: 5px;
+}
 
+.enviar{
+  margin: 10px;
+  padding: 5px;
+}
+
+.enviar:hover{
+  text-decoration: underline;
+  border-color: blue;
+  color: blue;
+}
 /*====== Basics ======*/
 * {
   box-sizing: border-box;
+}
+
+.hiper {
+  text-decoration: underline;
 }
 
 html,
@@ -29,7 +48,7 @@ body {
 body {
   font-family: var(--base-font-family);
   font-weight: 300;
-  background-color: var(--light-gray);
+  background-color: lightgrey;
 }
 
 ul,
@@ -158,7 +177,7 @@ hr {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
+  height: 500px;
 }
 
 
@@ -172,6 +191,7 @@ hr {
   font-size: 2.4em;
   font-weight: 400;
   color: var(--gray);
+  font-family: 'Times New Roman', serif;
 }
 
 .product-box {
@@ -188,6 +208,7 @@ hr {
 
 .product-box_image {
   border-bottom: 1px solid var(--light-gray);
+  height: 300px;
 }
 
 .product-box_data {
@@ -485,7 +506,7 @@ textarea.form-input {
   }
 
   .banner {
-    height: 320px;
+    height: 500px;
   }
 
   .btn-toggle-navbar {

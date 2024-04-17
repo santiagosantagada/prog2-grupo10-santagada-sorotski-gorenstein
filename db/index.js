@@ -1,11 +1,11 @@
 const datos = {
     usuario: {      
-        email: "luis@gmail.com" ,
+        email: "joacokusa@gmail.com" ,
         contraseña: "amodigital" ,
         fechaNacimiento: "20-10-2000" ,
         dni: "46364341" ,
-        usuario: "luis",
-        fotoPerfil: "https://media.istockphoto.com/id/1690733685/es/v%C3%ADdeo/retrato-de-cabeza-feliz-hombre-hispano-guapo.jpg?s=640x640&k=20&c=3V2ex2y88SRJAqm01O0oiwfb0M4uTeaDS8PEDvN95Kw=", 
+        usuario: "joacokusa",
+        fotoPerfil: "https://i.pinimg.com/236x/2d/03/56/2d035609483aad6a14b4b7a45223b32e.jpg" , 
     } ,
     productos: [
         {
