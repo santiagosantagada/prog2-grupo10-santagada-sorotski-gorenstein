@@ -77,7 +77,7 @@ const datos = {
             foto_perfil: "https://i.pinimg.com/236x/2d/03/56/2d035609483aad6a14b4b7a45223b32e.jpg" }]
         },
         {
-        imagen: "https://ecomotors.com.ar/wp-content/uploads/2023/02/ecomotors-bicicleta-electrica-z3-1.jpg" ,
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyhDVDLNUtslL6uRBX_xxzXXdaF3ABWkvBxDjieaqGRA&s" ,
         nombre_producto: "Bicicleta eléctrica" , 
         descripcion: "Bicicleta eléctrica 0km" ,
         comentarios: [{
@@ -113,7 +113,7 @@ const datos = {
 
         },
         {
-        imagen: "https://i.blogs.es/3a5a5e/gama-media-moviles/840_560.jpg",
+        imagen: "https://d2ihpvt6nd5q28.cloudfront.net/wp-content/uploads/2023/02/iPhone_14_Midnight_PDP_Image_Position-1A_LAES.jpg",
         nombre_producto:"Telefono celular",
         descripcion:"Iphone nuevo, sin uso",
         comentarios:[{
