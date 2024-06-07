@@ -1,4 +1,5 @@
-const datos= require("../db/index")
+const datos= require("../database/models")
+const {Association} = require("sequelize")
 
 const productosController= {
     product: function(req, res){
@@ -8,7 +9,8 @@ const productosController= {
     },
     searchresults: function(req, res){
         return res.render("searchresults", {
-            datos: datos
+            datos: datos.productos
+
         })
     },
     productAdd: function(req, res){
@@ -18,4 +20,6 @@ const productosController= {
     }
 
 }
+
+
 module.exports=productosController

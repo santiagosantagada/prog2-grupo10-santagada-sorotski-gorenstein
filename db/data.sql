@@ -5,6 +5,7 @@ USE data_3;
 CREATE TABLE usuarios (
 /* 	nombreColumna 		tipoDato 		Restricciones */
     id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    idProducto			INT				UNSIGNED,
     nombre 				VARCHAR(250) 	NOT NULL,
     apellido 			VARCHAR(250) 	NOT NULL,
     mail 				VARCHAR(250) 	NOT NULL,
@@ -13,21 +14,23 @@ CREATE TABLE usuarios (
     fechaNacimiento 	DATE 			NOT NULL,
     numeroDocumento 	INT 			NOT NULL,
     foto 				VARCHAR(250) 	NOT NULL,
+    foreign key (idProducto) REFERENCES productos(id),
     createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 	updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt  			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Santiago" , "Santagada" , "santisanta07@gmail.com" , "hola123" , "*****" , "2004-11-23" , 46123123 , "fotoperfil.png" , DEFAULT , DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Valentín" , "Fernandez" , "valenfer@gmail.com" , "chau123" , "*****" , "1980-11-24" , 37123123 , "fotoperfil.png" , DEFAULT, DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Sofia" , "Sanchez" , "ssanchez@gmail.com" , "sofi123" , "*****" , "2000-11-24" , 45123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Hernan" , "Gorenstein" , "hergoren@gmail.com" , "her123" , "*****" , "1997-11-24" , 39123123 , "fotoperfil.png" , DEFAULT ,DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Sol" , "Masri" , "solmasri@gmail.com" , "sol123" , "*****" , "2007-11-24" , 47123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
+INSERT INTO usuarios (id, idProducto,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+VALUES (DEFAULT ,DEFAULT, "Santiago" , "Santagada" , "santisanta07@gmail.com" , "hola123" , "*****" , "2004-11-23" , 46123123 , "fotoperfil.png" , DEFAULT , DEFAULT , DEFAULT) ;
+INSERT INTO usuarios (id,idProducto,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+VALUES (DEFAULT ,DEFAULT, "Valentín" , "Fernandez" , "valenfer@gmail.com" , "chau123" , "*****" , "1980-11-24" , 37123123 , "fotoperfil.png" , DEFAULT, DEFAULT , DEFAULT) ;
+INSERT INTO usuarios (id, idProducto,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+VALUES (DEFAULT ,DEFAULT, "Sofia" , "Sanchez" , "ssanchez@gmail.com" , "sofi123" , "*****" , "2000-11-24" , 45123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
+INSERT INTO usuarios (id, idProducto,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+VALUES (DEFAULT ,DEFAULT, "Hernan" , "Gorenstein" , "hergoren@gmail.com" , "her123" , "*****" , "1997-11-24" , 39123123 , "fotoperfil.png" , DEFAULT ,DEFAULT , DEFAULT) ;
+INSERT INTO usuarios (id,idProducto,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+VALUES (DEFAULT ,DEFAULT, "Sol" , "Masri" , "solmasri@gmail.com" , "sol123" , "*****" , "2007-11-24" , 47123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
+
 
 CREATE TABLE productos (
 /* 	nombreColumna 		tipoDato 		Restricciones */
@@ -36,7 +39,7 @@ CREATE TABLE productos (
     nombreImagen 		VARCHAR(250) 	NOT NULL,
     nombreProducto 		VARCHAR(250) 	NOT NULL,
     descripcion			VARCHAR(250) 	NOT NULL,
-    FOREIGN KEY (idUsuario) REFERENCES usuarios(id),
+    foreign key (idUsuario) REFERENCES usuarios(id),
     createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 	updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt  			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP 
@@ -69,7 +72,7 @@ CREATE TABLE comentarios (
     idProducto				INT 		UNSIGNED,
     idAutor					INT			unsigned,
     textoComentario 	VARCHAR(250) 	NOT NULL,
-    FOREIGN KEY (idProducto) REFERENCES productos(id),
+    foreign key (idProducto) REFERENCES productos(id),
     foreign key (idAutor) references usuarios(id),
     createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 	updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

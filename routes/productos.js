@@ -3,7 +3,12 @@ const router=express.Router()
 const productosController= require("../controllers/productosController")
 
 router.get("/", productosController.product)
-router.get("/productadd",productosController.productAdd)  
+
+router.get("/productadd", productosController.showFormCreate)
+
+router.post("/productadd", productosController.productAdd)
+
+
 router.get("/searchresults", productosController.searchresults)
 
 

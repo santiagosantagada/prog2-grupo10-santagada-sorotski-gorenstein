@@ -4,10 +4,10 @@ const usersController= require("../controllers/usersController")
 
 
 
-/* GET users listing. */
+/* GET users listing. 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
-});
+});*/
 
 router.get("/register", usersController.register)
 router.get("/login",usersController.login) 
