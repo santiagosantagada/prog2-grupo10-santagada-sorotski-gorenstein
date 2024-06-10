@@ -10,6 +10,16 @@ module.exports = function(sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER
         },
+        idProducto: {
+            autoIncrement: false,
+            primaryKey: false,
+            type: dataTypes.INTEGER
+        },
+        idAutor: {
+            autoIncrement: false,
+            primaryKey: false,
+            type: dataTypes.INTEGER
+        },
         textoComentario: {
             type: dataTypes.STRING
         }

@@ -1,9 +1,7 @@
-const datos= require("../db/index")
+const datos= require("../database/models")
 
 const usersController= {
     register: function(req, res){
-        return res.render("register", {
-        })
     },
     profile: function(req, res){
         return res.render("profile", {
@@ -21,4 +19,5 @@ const usersController= {
         })
     }
 }
+
 module.exports= usersController

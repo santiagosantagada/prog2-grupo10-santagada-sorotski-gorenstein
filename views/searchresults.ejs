@@ -14,20 +14,19 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Resultados de búsqueda para: <%=datos.productos[0].nombre_producto %> </h2>
+					<h2 class="products-title">Resultados de búsqueda para: <%=datos.nombreProducto %> </h2>
 				</div>
 	
 			
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product">
+						<a href="/product/id/<%=datos.id%>">
 							<figure class="product-box_image">
-								<img src="<%=datos.productos[0].imagen  %>" alt="">
+								<img src="<%=datos.foto  %>" alt="">
 							</figure>
 							<article class="product-box_data">
-								<h2><%=datos.productos[0].nombre_producto  %></h2>
-								<p><%=datos.productos[0].descripcion%> </p>
-								<p>Comentarios: <%= datos.productos[0].comentarios.length %></p>
+								<h2><%=datos.nombreProducto  %></h2>
+								<p><%=datos.descripcion%> </p>
 							</article>
 						</a>
 					</section>
