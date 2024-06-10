@@ -19,12 +19,15 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 				<form action="/users/login" method="GET" class="search-form">
-					<input id="email" type="email" name="Email" placeholder="Email" class="formulario">
-					<input id="Usuario" type="text" name="Usuario" placeholder="Usuario" class="formulario">
-					<input id="contrasenia" type="password" name="Contraseña" placeholder="Contraseña" class="formulario">
-					<input id="fechaNacimiento" type="date" name="Fecha de nacimiento" placeholder="Fecha de nacimiento" class="formulario">
-					<input id="numeroDocumento" type="number" name="Nro de documento" placeholder="Nro de documento" class="formulario">
-					<input id="foto" type="text" name="Foto de perfil" placeholder="Foto de perfil" class="formulario">
+					<input id="email" type="email" name="email" placeholder="Email" class="formulario">
+					<input id="usuario" type="text" name="name" placeholder="Usuario" class="formulario">
+					<% if (locals.errors && errors.email) { %>
+					 <p><%= errors.email.msg %></p>
+					<% } %>
+					<input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña" class="formulario">
+					<input id="fechaNacimiento" type="date" name="fechadenacimiento" placeholder="Fecha de nacimiento" class="formulario">
+					<input id="numeroDocumento" type="number" name="nrodedocumento" placeholder="Nro de documento" class="formulario">
+					<input id="foto" type="text" name="fotodeperfil" placeholder="Foto de perfil" class="formulario">
 					<button type="submit" class="enviar">Enviar</button>
 				</form>
 			</div>

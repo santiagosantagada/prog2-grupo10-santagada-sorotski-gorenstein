@@ -1,5 +1,7 @@
 const datos= require("../database/models")
 const {Association} = require("sequelize")
+const {validationsResult} = require("express-validator")
+
 
 const productosController= {
     product: function(req, res){
@@ -34,11 +36,15 @@ const productosController= {
 
         datos.Producto.findOne(filtrado)
         .then(function(result){
-            return res.render("searchresults", {datos: result})
-        }).catch(function(error) {
-            return console.log(error)
-        })
-        
+            if (result != undefined){
+                return res.render("searchresults", {datos: result})
+            } else{
+                return res.send("No hay resultados para su criterio de busqueda")
+        }})
+            
+        //}).catch(function(error) {
+        //    return res.send("no existe")
+       // }) ASI LO TENIAMOS ANTES EN VEZ DEL IF ELSE
        
     },
     productAdd: function(req, res){

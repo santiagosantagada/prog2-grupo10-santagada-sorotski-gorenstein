@@ -1,4 +1,6 @@
 const datos= require("../database/models")
+const {validationsResult} = require("express-validator")
+
 
 const indexController= {
     index: function(req, res){
