@@ -3,7 +3,25 @@ const {Association} = require("sequelize")
 
 const productosController= {
     product: function(req, res){
+        let idProducto = req.params.idProducto;
+
+        let filtrado = {
+            include: [
+                {association: "user"},
+                {association: "comentario"}
+            ]
+                    
+            
+        }   
         
+        datos.Producto.findByPk(idProducto, filtrado)
+        .then(function(result) {
+            //res.send(result)
+            return res.render("product", {datos: result})
+        })
+        .catch(function(error) {
+            return console.log(error);;
+        });
         //return res.render("product", {datos: datos.productos})
           
     },

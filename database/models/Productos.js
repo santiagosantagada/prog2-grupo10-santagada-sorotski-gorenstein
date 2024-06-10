@@ -10,6 +10,11 @@ module.exports = function(sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER
         },
+        idUsuario: {
+            autoIncrement: false,
+            primaryKey: false,
+            type: dataTypes.INTEGER
+        },
         nombreImagen: {
             type: dataTypes.STRING
         },
@@ -17,6 +22,9 @@ module.exports = function(sequelize, dataTypes) {
             type: dataTypes.STRING
         },
         descripcion:{
+            type: dataTypes.STRING
+        },
+        foto: {
             type: dataTypes.STRING
         }
     }
@@ -40,6 +48,10 @@ module.exports = function(sequelize, dataTypes) {
         Producto.belongsTo(models.Usuario, {
             as: "user",
             foreignKey: "idUsuario"
+        }),
+        Producto.hasMany(models.Comentario, {
+            as: "comentario",
+            foreignKey: "idAutor"
         })
     }
     

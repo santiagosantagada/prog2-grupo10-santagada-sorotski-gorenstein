@@ -2,7 +2,7 @@ const express=require("express")
 const router=express.Router()
 const productosController= require("../controllers/productosController")
 
-router.get("/", productosController.product)
+router.get("/id/:idProducto", productosController.product)
 
 router.get("/productadd", productosController.showFormCreate)
 
