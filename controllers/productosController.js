@@ -1,4 +1,5 @@
 const datos= require("../database/models")
+const bcrypt=require("bcryptjs")
 const {Association} = require("sequelize")
 const {validationsResult} = require("express-validator")
 
@@ -47,7 +48,7 @@ const productosController= {
        // }) ASI LO TENIAMOS ANTES EN VEZ DEL IF ELSE
        
     },
-    productAdd: function(req, res){
+    productadd: function(req, res){
         let form = req.body
         datos.Producto.create(form)
         .then((result) => {
@@ -61,7 +62,7 @@ const productosController= {
         if (req.session.user == undefined){
             return res.redirect("/users/login")
         } else{
-            return res.render("productAdd")
+            return res.render("product-add")
         }
     }
 

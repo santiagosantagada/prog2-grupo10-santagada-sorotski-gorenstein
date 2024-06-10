@@ -34,5 +34,6 @@ router.get("/profileEdit", usersController.profileEdit)
 
 
 router.post("/register", validations, usersController.store)
+router.post("/login",usersController.loginUser)
 
 module.exports = router;
