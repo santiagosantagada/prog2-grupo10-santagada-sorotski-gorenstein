@@ -44,9 +44,41 @@ const usersController= {
         
     },
     profile: function(req, res){
-        return res.render("profile", {
-            datos: datos.usuario
-        })
+        if(req.cookies.email && !req.session.user){
+            let filtro={
+                where:{email: req.cookies.email}
+            }
+            datos.Usuario.findOne(filtro)
+            
+            .then((function(user) {
+                return res.send(filtro)
+                req.session.user= {
+                nombre: user.nombre,
+                appelido: user.apellido,
+                usuario: user.usuario,
+                email: user.email,
+                dni : user.nrodedocumento,
+                fecha_nacimiento : user.fechadenacimiento,
+                foto_perfil : user.fotodeperfil,
+                }
+                return res.send(req.session.user)
+                return res.render("profile", {user: req.session.user})
+            }))
+            .catch(function(error){
+                return console.log(error)
+            })
+        
+
+        }else{
+            return res.send(filtro)
+            res.render("profile", {user: req.session.user})
+        }
+        
+        
+        
+        //return res.render("profile", {
+          //  datos: datos.usuario
+        //})
     },
     profileEdit: function(req, res){
         return res.render("profile-edit", {
