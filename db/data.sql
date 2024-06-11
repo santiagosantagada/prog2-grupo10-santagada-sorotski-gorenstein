@@ -6,34 +6,34 @@ CREATE TABLE usuarios (
 /* 	nombreColumna 		tipoDato 		Restricciones */
     id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombre 				VARCHAR(250) 	NOT NULL,
-    apellido 			VARCHAR(250) 	NOT NULL,
-    mail 				VARCHAR(250) 	NOT NULL,
+    apellido 			VARCHAR(250) 	,
+    email 				VARCHAR(250) 	NOT NULL,
     usuario 			VARCHAR(250) 	NOT NULL,
     contrasenia 		VARCHAR(250) 	NOT NULL,
-    fechaNacimiento 	DATE 			NOT NULL,
-    numeroDocumento 	INT 			NOT NULL,
-    foto 				VARCHAR(250) 	NOT NULL,
+    fechaNacimiento 	DATE 			,
+    numeroDocumento 	INT 			,
+    foto 				VARCHAR(250) 	,
     createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 	updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt  			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Santiago" , "Santagada" , "santisanta07@gmail.com" , "hola123" , "*****" , "2004-11-23" , 46123123 , "fotoperfil.png" , DEFAULT , DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+VALUES (DEFAULT , "Santiago" , "Santagada" , "santisanta07@gmail.com" , "hola123" , "1234" , "2004-11-23" , 46123123 , "fotoperfil.png" , DEFAULT , DEFAULT , DEFAULT) ;
+INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
 VALUES (DEFAULT , "Valentín" , "Fernandez" , "valenfer@gmail.com" , "chau123" , "*****" , "1980-11-24" , 37123123 , "fotoperfil.png" , DEFAULT, DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
 VALUES (DEFAULT , "Sofia" , "Sanchez" , "ssanchez@gmail.com" , "sofi123" , "*****" , "2000-11-24" , 45123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
 VALUES (DEFAULT , "Hernan" , "Gorenstein" , "hergoren@gmail.com" , "her123" , "*****" , "1997-11-24" , 39123123 , "fotoperfil.png" , DEFAULT ,DEFAULT , DEFAULT) ;
-INSERT INTO usuarios (id,nombre,apellido,mail,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
+INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
 VALUES (DEFAULT , "Sol" , "Masri" , "solmasri@gmail.com" , "sol123" , "*****" , "2007-11-24" , 47123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
 
 CREATE TABLE productos (
 /* 	nombreColumna 		tipoDato 		Restricciones */
     id                    INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     idUsuario 			  INT 			UNSIGNED,
-    nombreImagen 		VARCHAR(250) 	NOT NULL,
+    nombreImagen 		VARCHAR(250) 	,
     nombreProducto 		VARCHAR(250) 	NOT NULL,
     descripcion			VARCHAR(250) 	NOT NULL,
     foto				VARCHAR(250) 	NOT NULL,

@@ -4,12 +4,8 @@ const productosController= require("../controllers/productosController")
 const {body} = require("express-validator");
 
 router.get("/id/:idProducto", productosController.product)
-
 router.get("/productadd", productosController.showFormCreate)
-
 router.post("/productadd", productosController.productadd)
-
-
 router.get("/searchresults", productosController.searchresults)
 
 
