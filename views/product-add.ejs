@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 	<!-- include Head -->
-
 	<%- include("./partials/head") %>
 
+	
 
 	<body>
 		
 		<!-- /Header -->
-		<%- include("./partials/headerLogueado") %>
+		<% if (locals.user != undefined) { %>
+			<%- include("./partials/headerLogueado") %>
+		<% }else {%>
+			<%- include("./partials/header") %>
+		<%} %>
+	
 
 		<!-- Novedades -->
 		<div class="container products-wrapper">

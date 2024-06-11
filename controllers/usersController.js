@@ -1,4 +1,4 @@
-const datos= require("../database/models")
+const datos = require("../database/models")
 const bcrypt=require("bcryptjs")
 const {validationResult} = require("express-validator");
 
@@ -15,9 +15,14 @@ const usersController= {
         if (errors.isEmpty()) {
             let form = req.body
             let user = {
-                nombre: form.name,
+                nombre: form.nombre,
+                appelido: form.apellido,
+                usuario: form.usuario,
                 email: form.email,
-                contrasenia: bcrypt.hashSync(form.password, 10)
+                contrasenia: bcrypt.hashSync(form.contrasenia, 10),
+                dni : form.nrodedocumento,
+                fecha_nacimiento : form.fechadenacimiento,
+                foto_perfil : form.fotodeperfil,
             }
             
     
@@ -32,7 +37,7 @@ const usersController= {
                 
                 errors: errors.mapped()
             ,
-            old:req.body
+            old: req.body
             })
         }
         
@@ -57,24 +62,29 @@ const usersController= {
         let form=req.body
         //return res.send(form)
         let filtro={
-            where:[{email: form.email}]
+            where:{email: form.email}
         };
         datos.Usuario.findOne(filtro)
         .then((result)=>{
             //return res.send(result)
-            
-            if(result==null) return res.send("No existe el mail"+ form.email)
-            let check=bcrypt.compareSync(form.password,result.contrasenia);
-            if(check){
+            if(result == undefined) return res.send("No existe el mail "+ form.email);
+            let check = bcrypt.compareSync(form.contrasenia, result.contrasenia);
+            //return res.send(check)
+            if(result){
+                if(check){
                 req.session.user=result
-                if(form.rememberme != undefined){
+                if(form.rememberme) {//!= undefined)
                     res.cookie("userId", result.id, {maxAge: 1000 * 60 * 15})
                 }
                 return res.redirect("/");
                 
-            }else{
-                return res.send("La contrasenia es incorrecta")
+                }else{
+                    return res.send("La contrasenia es incorrecta")
+                }  
             }
+                      
+            
+
         }).catch((error)=>{
             return console.log(error)
         })
