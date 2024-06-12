@@ -42,7 +42,7 @@ router.get("/profile", usersController.profile)
 router.get("/profileEdit", usersController.profileEdit)
 
 
-
+router.post('/logout', usersController.logout)
 router.post("/register", validations, usersController.store)
 router.post("/login",usersController.loginUser)
 

@@ -120,6 +120,11 @@ const usersController= {
         }).catch((error)=>{
             return console.log(error)
         })
+    },
+    logout: function(req, res) {
+        req.session.destroy();
+        res.clearCookie("userId")
+        return res.redirect("/")
     }
 }
 
