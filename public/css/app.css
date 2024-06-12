@@ -16,13 +16,20 @@
   --base-font-family: 'Montserrat', sans-serif
 }
 .checkbox{
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
 }
 .formulario{
-  margin: 8px;
+  margin: 6px;
   padding: 5px;
+  height: 40px;
+  width: 130px;
  
+}
+
+.Recordarme{
+  font-size: medium;
+  color: #666666;
 }
 
 .NOMBRE{
@@ -35,6 +42,8 @@
 .enviar{
   margin: 10px;
   padding: 5px;
+  height: 40px;
+  width:fit-content;
 }
 
 .enviar:hover{
@@ -121,6 +130,8 @@ hr {
   position: relative;
   display: flex;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .search-form_input {

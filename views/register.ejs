@@ -29,10 +29,16 @@
 					<% if (locals.errors && errors.email) { %>
 						<p><%= errors.email.msg %></p>
 					   <% } %>
-					<input id="usuario" type="text" name="usuario" placeholder="Usuario" class="formulario">
-					<input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña" class="formulario">
+					<input id="usuario" type="text" name="usuario" placeholder="Usuario" class="formulario"  value="<%=locals.old != undefined && old.usuario ? old.usuario:""%>">
+					<% if (locals.errors && errors.usuario) { %>
+						<p><%= errors.usuario.msg %></p>
+					   <% } %>
+					<input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña" class="formulario" value="<%=locals.old != undefined && old.contrasenia ? old.contrasenia:""%>">
+					<% if (locals.errors && errors.contrasenia) { %>
+						<p><%= errors.contrasenia.msg %></p>
+					   <% } %>
 					<input id="fechaNacimiento" type="date" name="fechadenacimiento" placeholder="Fecha de nacimiento" class="formulario">
-					<input id="numeroDocumento" type="number" name="nrodedocumento" placeholder="Nro de documento" class="formulario">
+					<input id="numeroDocumento" type="number" name="nrodedocumento" placeholder="DNI" class="formulario">
 					<input id="foto" type="text" name="fotodeperfil" placeholder="Foto de perfil" class="formulario">
 					<button type="submit" class="enviar">Enviar</button>
 				</form>

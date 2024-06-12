@@ -1,7 +1,7 @@
 const datos= require("../database/models")
 const bcrypt=require("bcryptjs")
 const {Association} = require("sequelize")
-const {validationsResult} = require("express-validator")
+const {validationResult} = require("express-validator")
 
 
 const productosController= {
@@ -49,17 +49,33 @@ const productosController= {
        
     },
     productadd: function(req, res){
-        let form = req.body
-        datos.Producto.create(form)
-        .then((result) => {
-            return res.redirect("/product")
-        }).catch((error) => {
-            return console.log(error)
-        })
+        let errors= validationResult(req)
+        if (errors.isEmpty()) {
+            let form = req.body
+            let producto_nuevo = {
+                nombreProducto: form.nombreProducto,
+                foto: form.foto,
+                descripcion: form.descripcion
+            }
+        
+            datos.Producto.create(form)
+            .then((result) => {
+                //return res.send(result)
+                return res.redirect("/")
+            }).catch((error) => {
+                return console.log(error)
+            })
+        }else {
+            return res.render("product-add",{
+                errors: errors.mapped(),
+                old: req.body
+            })
+        }
         
     },
     showFormCreate: function (req, res) {
         if (req.session.user == undefined){
+            //return res.send(req.session.user == undefined)
             return res.redirect("/users/login")
         } else{
             return res.render("product-add")
