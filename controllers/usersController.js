@@ -22,7 +22,7 @@ const usersController= {
                 contrasenia: bcrypt.hashSync(form.contrasenia, 10),
                 dni : form.nrodedocumento,
                 fecha_nacimiento : form.fechadenacimiento,
-                foto_perfil : form.fotodeperfil,
+                foto : form.foto,
             }
             
     
@@ -56,7 +56,7 @@ const usersController= {
 
         datos.Usuario.findByPk(id, filtro)
         .then(function(result){
-            res.send(result)
+            //res.send(result)
             res.render("profile", {datos: result})
         })
         .catch(function(error){
