@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+	<!-- include Head -->
+	<%- include("./partials/head") %>
+
+	
+
+	<body>
+		
+		<!-- /Header -->
+		<% if (locals.user != undefined) { %>
+			<%- include("./partials/headerLogueado") %>
+		<% }else {%>
+			<%- include("./partials/header") %>
+		<%} %>
+	
+
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Modificar producto</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
+				<h2 class="col-12"> 
+					<form action="/product/editproduct" method="POST" class="search-form" >
+						<input type="text" name="foto" placeholder="Imagen" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
+						<% if (locals.errors && errors.foto) { %>
+							<p><%= errors.foto.msg %></p>
+						   <% } %>
+						<input type="text" name="nombreProducto" placeholder="Nombre del producto" class="formulario" value="<%=locals.old != undefined && old.nombreProducto ? old.nombreProducto:""%>">
+						<% if (locals.errors && errors.nombreProducto) { %>
+							<p><%= errors.nombreProducto.msg %></p>
+						   <% } %>
+						<input type="text" name="descripcion" placeholder="Descripción" class="formulario" value="<%=locals.old != undefined && old.descripcion ? old.descripcion:""%>">
+						<% if (locals.errors && errors.descripcion) { %>
+							<p><%= errors.descripcion.msg %></p>
+						   <% } %>
+
+						<button type="submit" class="enviar">Modificar</i></button>
+					</form>
+
+				</h2>
+			</div>
+		</div>
+
+		<!-- footer -->
+		<%- include("./partials/footer") %>
+
+		<!-- /footer -->
+	</body>
+
+</html>

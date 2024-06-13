@@ -18,6 +18,8 @@ router.get("/id/:idProducto", productosController.product)
 router.get("/productadd", productosController.showFormCreate)
 router.post("/productadd", validations, productosController.productadd)
 router.get("/searchresults", productosController.searchresults)
+router.get("/editproduct",  productosController.showformUpdate)
+router.post("/update", validations, productosController.editproduct)
 
 
 module.exports= router;

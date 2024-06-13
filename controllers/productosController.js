@@ -53,12 +53,13 @@ const productosController= {
         if (errors.isEmpty()) {
             let form = req.body
             let producto_nuevo = {
+                idUsuario : req.session.user.id,
                 nombreProducto: form.nombreProducto,
                 foto: form.foto,
-                descripcion: form.descripcion
-            }
+                descripcion: form.descripcion}
         
-            datos.Producto.create(form)
+        
+            datos.Producto.create(producto_nuevo)
             .then((result) => {
                 //return res.send(result)
                 return res.redirect("/")
@@ -80,7 +81,36 @@ const productosController= {
         } else{
             return res.render("product-add")
         }
+    },
+    editproduct: function(req,res){
+        
+        //que anden las validaciones
+        let form = req.body;
+
+
+        let filtro = {
+            where: [{id: form.id}]
+            }; 
+
+        datos.Producto.editproduct(form, filtro)
+        .then((result) => {
+        return res.redirect("/product/id/"+ form.id);
+        }).catch((err) => {
+        return console.log(err);
+        });
+    },
+    showformUpdate: function(req,res){
+        let id = req.params.idProducto;
+
+        datos.Producto.findByPk(id)
+        .then((result) => {
+            return res.render("editproduct", {datos: result});
+        }).catch((err) => {
+            return console.log(err);
+        });
+    
     }
+
 
 }
 

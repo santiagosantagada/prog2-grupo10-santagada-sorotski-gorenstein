@@ -53,9 +53,13 @@ module.exports = function(sequelize, dataTypes) {
 
         //todas las relaciones
         Usuario.hasMany(models.Producto, {
-            as: "product ",
+            as: "product",
             foreignKey: "idUsuario"
-        });
+        }),
+        Usuario.hasMany(models.Comentario, {
+            as: "comentario",
+            foreignKey: "idAutor"
+        })
     }
     
     return Usuario;

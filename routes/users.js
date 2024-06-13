@@ -38,7 +38,7 @@ router.get('/', function(req, res, next) {
 
 router.get("/register", usersController.register)
 router.get("/login",usersController.login) 
-router.get("/profile", usersController.profile)
+router.get("/profile/:userid", usersController.profile)
 router.get("/profileEdit", usersController.profileEdit)
 
 
