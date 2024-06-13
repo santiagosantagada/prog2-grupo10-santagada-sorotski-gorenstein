@@ -11,10 +11,11 @@ const productosController= {
         let filtrado = {
             include: [
                 {association: "user"},
-                {association: "comentario"}
+                {association: "comentario",
+            include: [{association: "user"}
             ]
-                    
-            
+                }
+        ]
         }   
         
         datos.Producto.findByPk(idProducto, filtrado)

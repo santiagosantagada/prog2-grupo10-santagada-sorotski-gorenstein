@@ -20,7 +20,7 @@
 			<div class="column">
 				<h2 class="products-title"><%=datos.nombreProducto  %></h2> 
 				    
-				<h2><a href="/product/productadd" class="hiper">  Editar</a></h2>
+				<h2><a href="/product/editproduct" class="hiper">  Editar</a></h2>
 				
 			</div>
 			<div class="product-detail">
@@ -31,13 +31,15 @@
 					</article>
 					<div class="col-12 col-lg-4">
 						<section class="comments">
-							<% for(let i=0; i < datos.comentario.length ; i++) { %>   
+							<% for(let i=0; i < 4 ; i++) { %>   
 							<article>
-
+								<img src="<%=datos.comentario[i].user.foto %>" alt="">
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/users/profile"><%datos.nombreProducto  //=datos.productos[0].comentarios[i].nombre_usuario  %></a> </strong>
-									<%=datos.comentario[i].textoComentario  %></p>
+									<strong> 
+										<a href="/users/profile"> <%=datos.comentario[i].user.usuario%></a> 
+									</strong>
+									<p> <%=datos.comentario[i].textoComentario  %></p>
 								</div>
 							</article>
 							<% } %>
