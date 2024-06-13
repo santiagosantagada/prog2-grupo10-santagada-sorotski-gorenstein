@@ -22,7 +22,7 @@ const usersController= {
                 contrasenia: bcrypt.hashSync(form.contrasenia, 10),
                 dni : form.nrodedocumento,
                 fecha_nacimiento : form.fechadenacimiento,
-                foto_perfil : form.fotodeperfil,
+                foto : form.foto,
             }
             
     
@@ -43,11 +43,27 @@ const usersController= {
         
         
     },
+    
     profile: function(req, res){
-        return res.render("profile", {
-            datos: datos.usuario
+        let id = req.params.userid
+        let filtro={
+            include:[
+                {association: "product",
+                    include: [{association: "comentario"}]
+                },
+            ]
+        }
+
+        datos.Usuario.findByPk(id, filtro)
+        .then(function(result){
+            //res.send(result)
+            res.render("profile", {datos: result})
+        })
+        .catch(function(error){
+            return console.log(error)
         })
     },
+
     profileEdit: function(req, res){
         return res.render("profile-edit", {
             datos: datos.productos
@@ -88,6 +104,11 @@ const usersController= {
         }).catch((error)=>{
             return console.log(error)
         })
+    },
+    logout: function(req, res) {
+        req.session.destroy();
+        res.clearCookie("userId")
+        return res.redirect("/")
     }
 }
 

@@ -31,11 +31,19 @@ app.use(session( { secret: "Nuestro mensaje secreto",
 
 app.use(function(req, res, next) {
   if (req.session.user != undefined) {
+    // res.send(req.session.user)
+
     res.locals.user = req.session.user
       }
   return next();
 });
 
+app.use(function(req, res, next) {
+  if (req.session.profile != undefined) {
+    res.locals.register = req.session.profile
+      }
+  return next();
+});
 
 app.use(function(req, res, next) {
   

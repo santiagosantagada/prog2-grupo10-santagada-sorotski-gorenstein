@@ -35,16 +35,15 @@
             </ul>
 
             <ul class="right-navbar">
-                <li><a href="/users/profile" class="hiper">
+                <li><a href="/users/profile/<%= locals.user.id  %>" class="hiper">
                         <%= locals.user.usuario %> <i class="fas fa-user"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/" class="hiper">
-                        Cerrar sesion  <i class="fas fa-user"></i>
-                    </a>
-                
-                </li>
+                    <form action="/users/logout" method="post">
+                      <button type="submit" class="enviar">Cerrar Sesion</button>
+                    </form>
+                  </li>
               
             </ul>
         </nav>

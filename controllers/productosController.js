@@ -1,7 +1,7 @@
 const datos= require("../database/models")
 const bcrypt=require("bcryptjs")
 const {Association} = require("sequelize")
-const {validationsResult} = require("express-validator")
+const {validationResult} = require("express-validator")
 
 
 const productosController= {
@@ -50,22 +50,68 @@ const productosController= {
        
     },
     productadd: function(req, res){
-        let form = req.body
-        datos.Producto.create(form)
-        .then((result) => {
-            return res.redirect("/product")
-        }).catch((error) => {
-            return console.log(error)
-        })
+        let errors= validationResult(req)
+        if (errors.isEmpty()) {
+            let form = req.body
+            let producto_nuevo = {
+                idUsuario : req.session.user.id,
+                nombreProducto: form.nombreProducto,
+                foto: form.foto,
+                descripcion: form.descripcion}
+        
+        
+            datos.Producto.create(producto_nuevo)
+            .then((result) => {
+                //return res.send(result)
+                return res.redirect("/")
+            }).catch((error) => {
+                return console.log(error)
+            })
+        }else {
+            return res.render("product-add",{
+                errors: errors.mapped(),
+                old: req.body
+            })
+        }
         
     },
     showFormCreate: function (req, res) {
         if (req.session.user == undefined){
+            //return res.send(req.session.user == undefined)
             return res.redirect("/users/login")
         } else{
             return res.render("product-add")
         }
+    },
+    editproduct: function(req,res){
+        
+        //que anden las validaciones
+        let form = req.body;
+
+
+        let filtro = {
+            where: [{id: form.id}]
+            }; 
+
+        datos.Producto.editproduct(form, filtro)
+        .then((result) => {
+        return res.redirect("/product/id/"+ form.id);
+        }).catch((err) => {
+        return console.log(err);
+        });
+    },
+    showformUpdate: function(req,res){
+        let id = req.params.idProducto;
+
+        datos.Producto.findByPk(id)
+        .then((result) => {
+            return res.render("editproduct", {datos: result});
+        }).catch((err) => {
+            return console.log(err);
+        });
+    
     }
+
 
 }
 

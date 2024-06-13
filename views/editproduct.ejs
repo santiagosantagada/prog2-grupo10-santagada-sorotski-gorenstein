@@ -19,11 +19,11 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Agregar productos</h2>
+					<h2 class="products-title">Modificar producto</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
-				<div class="col-12"> 
-					<form action="/product/productadd" method="POST" class="search-form" >
+				<h2 class="col-12"> 
+					<form action="/product/editproduct" method="POST" class="search-form" >
 						<input type="text" name="foto" placeholder="Imagen" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
 						<% if (locals.errors && errors.foto) { %>
 							<p><%= errors.foto.msg %></p>
@@ -37,10 +37,10 @@
 							<p><%= errors.descripcion.msg %></p>
 						   <% } %>
 
-						<button type="submit" class="enviar">Enviar</i></button>
+						<button type="submit" class="enviar">Modificar</i></button>
 					</form>
 
-				</div>
+				</h2>
 			</div>
 		</div>
 
