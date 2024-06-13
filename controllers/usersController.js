@@ -43,43 +43,27 @@ const usersController= {
         
         
     },
+    
     profile: function(req, res){
-        if(req.cookies.email && !req.session.user){
-            let filtro={
-                where:{email: req.cookies.email}
-            }
-            datos.Usuario.findOne(filtro)
-            
-            .then((function(user) {
-                return res.send(filtro)
-                req.session.user= {
-                nombre: user.nombre,
-                appelido: user.apellido,
-                usuario: user.usuario,
-                email: user.email,
-                dni : user.nrodedocumento,
-                fecha_nacimiento : user.fechadenacimiento,
-                foto_perfil : user.fotodeperfil,
-                }
-                return res.send(req.session.user)
-                return res.render("profile", {user: req.session.user})
-            }))
-            .catch(function(error){
-                return console.log(error)
-            })
-        
-
-        }else{
-            return res.send(filtro)
-            res.render("profile", {user: req.session.user})
+        let id = req.params.userid
+        let filtro={
+            include:[
+                {association: "product",
+                    include: [{association: "comentario"}]
+                },
+            ]
         }
-        
-        
-        
-        //return res.render("profile", {
-          //  datos: datos.usuario
-        //})
+
+        datos.Usuario.findByPk(id, filtro)
+        .then(function(result){
+            res.send(result)
+            res.render("profile", {datos: result})
+        })
+        .catch(function(error){
+            return console.log(error)
+        })
     },
+
     profileEdit: function(req, res){
         return res.render("profile-edit", {
             datos: datos.productos
