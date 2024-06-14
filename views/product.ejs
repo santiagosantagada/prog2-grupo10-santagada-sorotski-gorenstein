@@ -31,17 +31,21 @@
 					</article>
 					<div class="col-12 col-lg-4">
 						<section class="comments">
+						<% if (datos.comentario && datos.comentario.length > 0) { %>
 							<% for(let i=0; i < 4 ; i++) { %>   
 							<article>
 								<img src="<%=datos.comentario[i].user.foto %>" alt="">
 								<div class="data">
 									<p class="user">
 									<strong> 
-										<a href="/users/profile"> <%=datos.comentario[i].user.usuario%></a> 
+										<a href="/users/profile/<%=datos.comentario[i].user.id%>"> <%=datos.comentario[i].user.usuario%></a> 
 									</strong>
 									<p> <%=datos.comentario[i].textoComentario  %></p>
 								</div>
 							</article>
+							<% } %>
+							<% } else { %>
+								<p>Aún no hay comentarios.</p>
 							<% } %>
 						</section>
 						<form class="form" action="/product" method="get">
