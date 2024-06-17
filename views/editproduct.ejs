@@ -23,16 +23,16 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 				<h2 class="col-12"> 
-					<form action="/product/editproduct" method="POST" class="search-form" >
-						<input type="text" name="foto" placeholder="Imagen" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
+					<form action="/product/editproduct/<%= datos.id%>" method="POST" class="search-form" >
+						<input type="text" name="foto" placeholder="<%= datos.foto %>" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
 						<% if (locals.errors && errors.foto) { %>
 							<p><%= errors.foto.msg %></p>
 						   <% } %>
-						<input type="text" name="nombreProducto" placeholder="Nombre del producto" class="formulario" value="<%=locals.old != undefined && old.nombreProducto ? old.nombreProducto:""%>">
+						<input type="text" name="nombreProducto" placeholder="<%= datos.nombreProducto %>" class="formulario" value="<%=locals.old != undefined && old.nombreProducto ? old.nombreProducto:""%>">
 						<% if (locals.errors && errors.nombreProducto) { %>
 							<p><%= errors.nombreProducto.msg %></p>
 						   <% } %>
-						<input type="text" name="descripcion" placeholder="Descripción" class="formulario" value="<%=locals.old != undefined && old.descripcion ? old.descripcion:""%>">
+						<input type="text" name="descripcion" placeholder="<%= datos.descripcion %>" class="formulario" value="<%=locals.old != undefined && old.descripcion ? old.descripcion:""%>">
 						<% if (locals.errors && errors.descripcion) { %>
 							<p><%= errors.descripcion.msg %></p>
 						   <% } %>

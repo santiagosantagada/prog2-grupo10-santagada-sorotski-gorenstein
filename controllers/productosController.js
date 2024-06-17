@@ -12,9 +12,7 @@ const productosController= {
             include: [
                 {association: "user"},
                 {association: "comentario",
-            include: [{association: "user"}
-            ]
-                }
+                    include: [{association: "user"}]}
         ]
         }   
         
@@ -77,41 +75,95 @@ const productosController= {
     },
     showFormCreate: function (req, res) {
         if (req.session.user == undefined){
-            //return res.send(req.session.user == undefined)
             return res.redirect("/users/login")
         } else{
             return res.render("product-add")
         }
     },
     editproduct: function(req,res){
-        
-        //que anden las validaciones
-        let form = req.body;
-
-
+        let idd = req.params.productoId;
+        let errors = validationResult(req);
+        let form = req.body
         let filtro = {
-            where: [{id: form.id}]
-            }; 
+            include: [
+                {association: "user"},
+                {
+                    association: "comentario", 
+                    include:[{ association: "user"}]
+                }
+            ]}
 
-        datos.Producto.editproduct(form, filtro)
-        .then((result) => {
-        return res.redirect("/product/id/"+ form.id);
-        }).catch((err) => {
-        return console.log(err);
-        });
+        if (errors.isEmpty()) {
+            
+            let editar_producto = {
+                idUsuario : req.session.user.id,
+                nombreProducto: form.nombreProducto,
+                foto: form.foto,
+                descripcion: form.descripcion}
+        
+        
+            datos.Producto.update(editar_producto, {where: {id: idd}})
+            .then((result) => {
+                //res.send(result)
+                return res.redirect("/")
+            }).catch((error) => {
+                return console.log(error)
+            })
+        }else {
+            datos.Producto.findByPk(idd, filtro)
+            .then(function(result){
+                //return res.send(result)
+                if (req.session.user.id == result.idUsuario){
+                    
+                    return res.render("editproduct", {
+                        datos: result, 
+                        errors: errors.mapped(), 
+                        old: req.body
+                    });
+                }else {
+                    res.send("Solo podras editar un producto que sea tuyo")
+                }
+                
+            }).catch((err) => {
+                return console.log(err);
+            });
+            
+        }
+    
     },
     showformUpdate: function(req,res){
-        let id = req.params.idProducto;
-
-        datos.Producto.findByPk(id)
-        .then((result) => {
-            return res.render("editproduct", {datos: result});
-        }).catch((err) => {
-            return console.log(err);
-        });
+        let id = req.params.productoId;
+        let filtro = {
+            include: [
+                {association: "user"},
+                {
+                    association: "comentario", 
+                    include:[{ association: "user"}]
+                }
+            ]
+        }
+        if (req.session.user == undefined){
+            return res.redirect("/users/login")
+        } else{
+        
+            datos.Producto.findByPk(id, filtro)
+            .then(function(result)  {
+                //res.send(result)
+                if (req.session.user.id == result.idUsuario){
+                    
+                    return res.render("editproduct", {datos: result});
+                }else {
+                    res.send("Solo podras editar un producto que sea tuyo")
+                }
+                
+            }).catch((err) => {
+                return console.log(err);
+            });
     
-    }
+        }
 
+
+    }
 
 }
 
