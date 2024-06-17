@@ -163,6 +163,40 @@ const productosController= {
         }
 
 
+    },
+    delete:function(req,res){
+        let idd = req.params.productoId
+        let filtro = {
+            include: [
+            {association: "user"},
+            {
+                association: "comentario", 
+                include:[{ association: "user"}]
+            }
+        ]
+    }
+
+    datos.Producto.findByPk(idd, filtro)
+    .then(function(result){
+        //res.send(result)
+        if (req.session.user.id == result.idUsuario){
+            datos.Producto.destroy({
+                where: {id: idd}
+            })
+            .then(function(){
+                return res.redirect("/");
+
+            })
+            .catch(function(error){
+                return console.log(error)
+            })
+        } else {
+            res.send("Solo podes borrar un producto que sea tuyo")
+        }
+    })
+    .catch(function(error){
+        return console.log(error)
+    })
     }
 
 }
