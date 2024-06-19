@@ -34,6 +34,19 @@ module.exports = function(sequelize, dataTypes) {
         },
         foto: {
             type: dataTypes.INTEGER
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            field: "createdAt"
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            field: "updatedAt"
+        },
+        deletedAt: {
+            type: dataTypes.DATE,
+            field: "deletedAt"
+
         }
     }
 		

@@ -10,13 +10,13 @@ const usersController= {
             return res.render("register")
         }
     },
-    store: (req, res)=>{ //no funciona
+    store: (req, res)=>{ 
         let errors= validationResult(req)
         if (errors.isEmpty()) {
             let form = req.body
             let user = {
                 nombre: form.nombre,
-                appelido: form.apellido,
+                apellido: form.apellido,
                 usuario: form.usuario,
                 email: form.email,
                 contrasenia: bcrypt.hashSync(form.contrasenia, 10),
@@ -28,6 +28,7 @@ const usersController= {
     
             datos.Usuario.create(user)
             .then((result)=>{
+                req.session.user = result
                 return res.redirect("/users/login")
             }).catch((error)=>{
                 return console.log(error)

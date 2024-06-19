@@ -31,24 +31,24 @@ app.use(session( { secret: "Nuestro mensaje secreto",
 
 app.use(function(req, res, next) {
   if (req.session.user != undefined) {
-    // res.send(req.session.user)
-
+    //res.send(req.session.user)
     res.locals.user = req.session.user
-      }
+    //res.send(res.locals.user)
+  }
   return next();
 });
 
-app.use(function(req, res, next) {
-  if (req.session.profile != undefined) {
-    res.locals.register = req.session.profile
-      }
-  return next();
-});
+// app.use(function(req, res, next) {
+//   if (req.session.profile != undefined) {
+//     res.locals.register = req.session.profile
+//       }
+//   return next();
+// });
 
 app.use(function(req, res, next) {
   
   if (req.cookies.userId != undefined && req.session.user == undefined) {
-    let idUsuario = req.cookies.userId; /*  6 */
+    let idUsuario = req.cookies.userId; 
 
     datos.Usuario.findByPk(idUsuario)
     .then((result) => {
@@ -58,7 +58,6 @@ app.use(function(req, res, next) {
     }).catch((err) => {
       return console.log(err);
     });
-    /* buscar el id en la db */
   } else {
     return next();
   }

@@ -197,6 +197,48 @@ const productosController= {
     .catch(function(error){
         return console.log(error)
     })
+    },
+    comentario: function(req,res){
+        let idd = req.params.idProducto;
+        let errors = validationResult(req)
+        let form = req.body
+
+        if (errors.isEmpty()) {
+            let comentario_nuevo = {
+                idProducto: idd,
+                idAutor : req.session.user.id,
+                textoComentario: form.textoComentario
+            }
+        
+            datos.Comentario.create(comentario_nuevo)
+            .then(function(result) {
+                //res.send(result)
+                return res.redirect(⁠ /product/id/${idd} ⁠)
+            
+            }).catch((error) => {
+                return console.log(error)
+            })
+        }else {
+            let filtro= {
+                include: [
+                    {association: "user"},
+                    {
+                        association: "comentario", 
+                        include:[{ association: "user"}]
+                    }]
+            }
+            datos.Producto.findByPk(idd, filtro)
+            .then(function(result){
+                return res.render("product", {
+                    datos: result,
+                    errors: errors.mapped(),
+                    old: req.body
+                });
+            })
+            .catch((error) => {
+                return console.log(error)
+            })
+        }
     }
 
 }
