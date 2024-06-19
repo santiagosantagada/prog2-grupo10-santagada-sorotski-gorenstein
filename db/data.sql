@@ -6,34 +6,34 @@ CREATE TABLE usuarios (
 /* 	nombreColumna 		tipoDato 		Restricciones */
     id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombre 				VARCHAR(250) 	NOT NULL,
-    apellido 			VARCHAR(250) 	,
+    apellido 			VARCHAR(250) 	NULL,
     email 				VARCHAR(250) 	NOT NULL,
     usuario 			VARCHAR(250) 	NOT NULL,
     contrasenia 		VARCHAR(250) 	NOT NULL,
-    fechaNacimiento 	DATE 			,
-    numeroDocumento 	INT 			,
-    foto 				VARCHAR(250) 	,
+    fechaNacimiento 	DATE 			NULL,
+    numeroDocumento 	INT 			NULL,
+    foto 				VARCHAR(250) 	NULL,
     createdAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ,
 	updatedAt 			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt  			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Santiago" , "Santagada" , "santisanta07@gmail.com" , "hola123" , "1234" , "2004-11-23" , 46123123 , "fotoperfil.png" , DEFAULT , DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , "Santiago" , "Santagada" , "santisanta07@gmail.com" , "hola123" , "1234" , "2004-11-23" , 46123123 , "https://i.pinimg.com/550x/4b/b5/2d/4bb52d53a8250dc401006b065824ec78.jpg" , DEFAULT , DEFAULT , DEFAULT) ;
 INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Valentín" , "Fernandez" , "valenfer@gmail.com" , "chau123" , "*****" , "1980-11-24" , 37123123 , "fotoperfil.png" , DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , "Valentín" , "Fernandez" , "valenfer@gmail.com" , "chau123" , "*****" , "1980-11-24" , 37123123 , "https://i.pinimg.com/550x/4b/b5/2d/4bb52d53a8250dc401006b065824ec78.jpg" , DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Sofia" , "Sanchez" , "ssanchez@gmail.com" , "sofi123" , "*****" , "2000-11-24" , 45123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , "Sofia" , "Sanchez" , "ssanchez@gmail.com" , "sofi123" , "*****" , "2000-11-24" , 45123123 , "https://i.pinimg.com/550x/4b/b5/2d/4bb52d53a8250dc401006b065824ec78.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Hernan" , "Gorenstein" , "hergoren@gmail.com" , "her123" , "*****" , "1997-11-24" , 39123123 , "fotoperfil.png" , DEFAULT ,DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , "Hernan" , "Gorenstein" , "hergoren@gmail.com" , "her123" , "*****" , "1997-11-24" , 39123123 , "https://i.pinimg.com/550x/4b/b5/2d/4bb52d53a8250dc401006b065824ec78.jpg" , DEFAULT ,DEFAULT , DEFAULT) ;
 INSERT INTO usuarios (id,nombre,apellido,email,usuario,contrasenia,fechaNacimiento,numeroDocumento,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , "Sol" , "Masri" , "solmasri@gmail.com" , "sol123" , "*****" , "2007-11-24" , 47123123 , "fotoperfil.png" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , "Sol" , "Masri" , "solmasri@gmail.com" , "sol123" , "*****" , "2007-11-24" , 47123123 , "https://i.pinimg.com/550x/4b/b5/2d/4bb52d53a8250dc401006b065824ec78.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
 
 CREATE TABLE productos (
 /* 	nombreColumna 		tipoDato 		Restricciones */
     id                    INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     idUsuario 			  INT 			UNSIGNED,
-    nombreImagen 		VARCHAR(250) 	,
+    nombreImagen 		VARCHAR(250) 	NULL,
     nombreProducto 		VARCHAR(250) 	NOT NULL,
     descripcion			VARCHAR(250) 	NOT NULL,
     foto				VARCHAR(250) 	NOT NULL,
@@ -43,25 +43,25 @@ CREATE TABLE productos (
     deletedAt  			TIMESTAMP 		DEFAULT CURRENT_TIMESTAMP 
 );
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES ( DEFAULT,DEFAULT,"Excelente compu" , "Computadora" , "Excelente computadora en optimas condiciones","https://img.global.news.samsung.com/mx/wp-content/uploads/2019/01/Notebook-9-Pro-3.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES ( DEFAULT,1,"Excelente compu" , "Computadora" , "Excelente computadora en optimas condiciones","https://img.global.news.samsung.com/mx/wp-content/uploads/2019/01/Notebook-9-Pro-3.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , DEFAULT,"Gran Telefono " , "Telefono" , "Iphone nuevo, sin uso", "https://d2ihpvt6nd5q28.cloudfront.net/wp-content/uploads/2023/02/iPhone_14_Midnight_PDP_Image_Position-1A_LAES.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , 2,"Gran Telefono " , "Telefono" , "Iphone nuevo, sin uso", "https://d2ihpvt6nd5q28.cloudfront.net/wp-content/uploads/2023/02/iPhone_14_Midnight_PDP_Image_Position-1A_LAES.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , DEFAULT,"Increibles auriculares" , "Auriculares" , "Escucha perfecta asegurada. inalambricos","https://tccommercear.vtexassets.com/arquivos/ids/157480-800-800?v=638261719983600000&width=800&height=800&aspect=true" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , 3,"Increibles auriculares" , "Auriculares" , "Escucha perfecta asegurada. inalambricos","https://tccommercear.vtexassets.com/arquivos/ids/157480-800-800?v=638261719983600000&width=800&height=800&aspect=true" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT ,DEFAULT, "Carga perfecta" , "Cargador" , "El mejor cargador que puedas encontrar","https://http2.mlstatic.com/D_NQ_NP_783666-MLU70945255832_082023-O.webp",DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT ,4, "Carga perfecta" , "Cargador" , "El mejor cargador que puedas encontrar","https://http2.mlstatic.com/D_NQ_NP_783666-MLU70945255832_082023-O.webp",DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT ,DEFAULT, "Ipod nuevo" , "Ipod" , "Recien llegado a Argentina, muy bueno", "https://i5.walmartimages.com/seo/Apple-iPod-touch-7th-Generation-256GB-Silver-New-Model_5185a146-a627-49fc-9063-9cea5e51c587_1.8c5b3c8cbec582210b21e7cfcf404f84.jpeg",DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT ,5, "Ipod nuevo" , "Ipod" , "Recien llegado a Argentina, muy bueno", "https://i5.walmartimages.com/seo/Apple-iPod-touch-7th-Generation-256GB-Silver-New-Model_5185a146-a627-49fc-9063-9cea5e51c587_1.8c5b3c8cbec582210b21e7cfcf404f84.jpeg",DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT ,DEFAULT, "Televisión" , "Televisión" , "Televisión 60 pulgadas","https://www.lg.com/ar/images/televisores/md06198056/gallery/des_1_n.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT ,1, "Televisión" , "Televisión" , "Televisión 60 pulgadas","https://www.lg.com/ar/images/televisores/md06198056/gallery/des_1_n.jpg" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT ,DEFAULT, "Monitor nuevo" , "Monitor" , "Monitor nuevo 144hz", "https://images.samsung.com/is/image/samsung/p6pim/ar/lc24rg50fzlczb/gallery/ar-c24rg5-433672-lc24rg50fzlczb-533475182?$650_519_PNG$" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT ,2, "Monitor nuevo" , "Monitor" , "Monitor nuevo 144hz", "https://images.samsung.com/is/image/samsung/p6pim/ar/lc24rg50fzlczb/gallery/ar-c24rg5-433672-lc24rg50fzlczb-533475182?$650_519_PNG$" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT ,DEFAULT, "PlayStation 5 blanca" , "PlayStation 5" , "Nueva PlayStation edición limitada", "https://arsonyb2c.vtexassets.com/arquivos/ids/362074/PlayStation-5-DualShock.jpg?v=638162215101070000" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT ,3, "PlayStation 5 blanca" , "PlayStation 5" , "Nueva PlayStation edición limitada", "https://arsonyb2c.vtexassets.com/arquivos/ids/362074/PlayStation-5-DualShock.jpg?v=638162215101070000" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT ,DEFAULT, "Patineta" , "Patineta eléctrica" , "Patineta nueva, con dibujos unicos", "https://www.compu-santafe.com.ar/productos/get-imagen/39013" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT ,4, "Patineta" , "Patineta eléctrica" , "Patineta nueva, con dibujos unicos", "https://www.compu-santafe.com.ar/productos/get-imagen/39013" ,DEFAULT, DEFAULT , DEFAULT) ;
 INSERT INTO productos (id,idUsuario,nombreImagen,nombreProducto,descripcion,foto,createdAt,updatedAt,deletedAt) 
-VALUES (DEFAULT , DEFAULT,"Bicicleta" , "Bicicleta a motor" , "Bicicleta nueva", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyhDVDLNUtslL6uRBX_xxzXXdaF3ABWkvBxDjieaqGRA&s" ,DEFAULT, DEFAULT , DEFAULT) ;
+VALUES (DEFAULT , 5,"Bicicleta" , "Bicicleta a motor" , "Bicicleta nueva", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyhDVDLNUtslL6uRBX_xxzXXdaF3ABWkvBxDjieaqGRA&s" ,DEFAULT, DEFAULT , DEFAULT) ;
 
 
 CREATE TABLE comentarios (
