@@ -82,9 +82,10 @@ const usersController= {
                 usuario: form.usuario,
                 email: form.email,
                 contrasenia: bcrypt.hashSync(form.contrasenia, 10),
+                foto : form.foto,
                 dni : form.nrodedocumento,
                 fecha_nacimiento : form.fechadenacimiento,
-                foto : form.foto
+   
             }
         
         
@@ -92,14 +93,15 @@ const usersController= {
             .then((result) => {
                 ///res.send(result)
                 req.session.user = {
+                    id: idd,
                     nombre: form.nombre,
                     apellido: form.apellido,
                     usuario: form.usuario,
                     email: form.email,
                     dni : form.nrodedocumento,
                     contrasenia: bcrypt.hashSync(form.contrasenia, 10),
+                    foto : form.foto,
                     fecha_nacimiento : form.fechadenacimiento,
-                    foto : form.foto
                 }
                 return res.redirect(`/users/profile/${idd}`)
             }).catch((error) => {
@@ -114,9 +116,9 @@ const usersController= {
                             apellido: form.apellido,
                             usuario: form.usuario,
                             email: form.email,
+                            foto : form.foto,
                             dni : form.nrodedocumento,
                             fecha_nacimiento : form.fechadenacimiento,
-                            foto : form.foto
                         }
                     
                     
@@ -124,13 +126,15 @@ const usersController= {
                         .then((result) => {
                             ///res.send(result)
                             req.session.user = {
+                                id: idd,
                                 nombre: form.nombre,
                                 apellido: form.apellido,
                                 usuario: form.usuario,
                                 email: form.email,
+                                foto : form.foto,
                                 dni : form.nrodedocumento,
                                 fecha_nacimiento : form.fechadenacimiento,
-                                foto : form.foto
+                                
                             }
                             return res.redirect(`/users/profile/${idd}`)
                         }).catch((error) => {
@@ -175,11 +179,12 @@ const usersController= {
             datos.Usuario.findByPk(id)
             .then(function(result)  {
                 //res.send(result)
-                if (req.session.user.id == result.id){
+                if (req.session.user.id != id){
                     
-                    return res.render("profile-edit", {datos: result});
-                }else {
                     res.send("Solo puedes editar tu propio perfil")
+                    
+                }else {
+                    return res.render("profile-edit", {datos: result});
                 }
                 
             }).catch((err) => {
