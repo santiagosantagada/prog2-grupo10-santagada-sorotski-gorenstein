@@ -5,9 +5,12 @@ const {validationsResult} = require("express-validator")
 
 const indexController= {
     index: function(req, res){
-        let filtrado= {
+        let filtrado = {
             include: [
-            {association: "user"}
+                {association: "user"},
+            ],
+            order: [
+                ['createdAt', 'DESC'] 
             ]
         }
         datos.Producto.findAll(filtrado)

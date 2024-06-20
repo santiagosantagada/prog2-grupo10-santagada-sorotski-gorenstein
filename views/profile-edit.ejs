@@ -22,15 +22,28 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 				<h2 class="col-12"> 
-					<form action="/users/login" method="GET" class="search-form" >
-						<input type="email" name="Email" placeholder="Email" class="formulario">
-						<input type="text" name="Usuario" placeholder="Usuario" class="formulario">
-						<input type="password" name="Contraseña" placeholder="Contraseña" class="formulario">
-						<input type="date" name="Fecha de nacimiento" placeholder="Fecha de nacimiento" class="formulario">
-						<input type="number" name="Nro de documento" placeholder="Nro de documento" class="formulario">
-						<input type="text" name="Foto de perfil" placeholder="Foto de perfil" class="formulario">
+					<form action="/users/profileEdit/<%=datos.id%>" method="POST" class="search-form" >
+						<input type="text" name="nombre" placeholder="<%=datos.nombre  %>" class="formulario">
+					<input type="text" name="apellido" placeholder="<%=datos.apellido%>" class="formulario">
+					<input id="email" type="email" name="email" placeholder="<%=datos.email  %>" class="formulario" value="<%=locals.old != undefined && old.email ? old.email:""%>">
+					<% if (locals.errors && errors.email) { %>
+						<p><%= errors.email.msg %></p>
+					   <% } %>
+					<input id="usuario" type="text" name="usuario" placeholder="<%=datos.usuario  %>" class="formulario"  value="<%=locals.old != undefined && old.usuario ? old.usuario:""%>">
+					<% if (locals.errors && errors.usuario) { %>
+						<p><%= errors.usuario.msg %></p>
+					   <% } %>
+					<input id="contrasenia" type="password" name="contrasenia" placeholder="<%=datos.contrasenia  %>seña" class="formulario" value="<%=locals.old != undefined && old.contrasenia ? old.contrasenia:""%>">
+					<% if (locals.errors && errors.contrasenia) { %>
+						<p><%= errors.contrasenia.msg %></p>
+					   <% } %>
+						<input type="date" name="Fecha de nacimiento" placeholder="<%=datos.fechaNacimiento  %>" class="formulario">
+						
+						<input type="number" name="Nro de documento" placeholder="<%=datos.numeroDocumento%>" class="formulario">
+						
+						<input type="text" name="Foto de perfil" placeholder="<%=datos.foto%>" class="formulario">
 
-						<button type="submit" class="enviar">Enviar</button>
+						<button type="submit" class="enviar">Editar</button>
 					</form>
 				</h2>
 			</div>

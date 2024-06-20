@@ -21,7 +21,7 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Novedades</h2>
+					<h2 class="products-title"> Ultimos productos</h2>
 				</div>
 				<!-- Show the "ultimos" products -->
 
@@ -36,7 +36,8 @@
 							<article class="product-box_data">
 								<h2><%=datos[i].nombreProducto  %></h2>
 								<p><%=datos[i].descripcion%> </p>
-								
+								<a href="users/profile/<%=datos[i].user.id%>"><p>Creaod por: <%=datos[i].user.usuario%> </p></a>
+
 							</article>
 						</a>
 					</section>
@@ -45,34 +46,7 @@
 			</div>	
 		</div>
 		<!-- /Novedades -->
-		<!-- Más comentados -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="products-title">Más comentados</h2>
-				</div>
-				<!-- Show the "ultimos" products -->
-				<% for(let i=0; i < 4; i++) { %>   
-					<div class="col-12 col-sm-6 col-lg-3">
-						<section class="product-box">
-							<a href="/product/id/<%=datos[i].id%>">
-								<figure class="product-box_image">
-									<img src="<%= datos[i].foto %>" alt="">
-								</figure>
-								<article class="product-box_data">
-									<h2><%=datos[i].nombreProducto  %></h2>
-									<p><%=datos[i].descripcion%> </p>
-								
-							</article>
-							</a>
-						</section>
-					</div>
-				<% } %>
 				
-				
-			</div>
-		</div>
-		
 		<!-- footer -->
 		<%- include("./partials/footer") %>
 

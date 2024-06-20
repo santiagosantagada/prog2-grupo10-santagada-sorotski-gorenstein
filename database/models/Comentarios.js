@@ -22,6 +22,18 @@ module.exports = function(sequelize, dataTypes) {
         },
         textoComentario: {
             type: dataTypes.STRING
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            field: "createdAt"
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            field: "updatedAt"
+        },
+        deletedAt: {
+            type: dataTypes.DATE,
+            field: "deletedAt"
         }
     }
 		

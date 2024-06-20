@@ -47,17 +47,16 @@ const usersController= {
     
     profile: function(req, res){
         let id = req.params.userid
-        let filtro={
-            include:[
-                {association: "product",
-                    include: [{association: "comentario"}]
-                },
-            ]
+        let filtro = {
+            include: [
+                {association: "product"}
+            ],
+            order: [['createdAt', 'DESC']]
         }
-
+       
         datos.Usuario.findByPk(id, filtro)
         .then(function(result){
-            //res.send(result)
+            //res.send(result.foto.length ==0)
             res.render("profile", {datos: result})
         })
         .catch(function(error){
@@ -66,9 +65,127 @@ const usersController= {
     },
 
     profileEdit: function(req, res){
-        return res.render("profile-edit", {
-            datos: datos.productos
-        })
+        let idd = req.params.userid;
+        let errors = validationResult(req);
+        let form = req.body
+        let filtro = {
+            include: [
+                {association: "product"},
+            ]}
+        //return res.send(errors)
+
+        if (errors.isEmpty()) {
+            
+            let editar_perfil = {
+                nombre: form.nombre,
+                apellido: form.apellido,
+                usuario: form.usuario,
+                email: form.email,
+                contrasenia: bcrypt.hashSync(form.contrasenia, 10),
+                dni : form.nrodedocumento,
+                fecha_nacimiento : form.fechadenacimiento,
+                foto : form.foto
+            }
+        
+        
+            datos.Usuario.update(editar_perfil, {where: {id: idd}})
+            .then((result) => {
+                ///res.send(result)
+                req.session.user = {
+                    nombre: form.nombre,
+                    apellido: form.apellido,
+                    usuario: form.usuario,
+                    email: form.email,
+                    dni : form.nrodedocumento,
+                    contrasenia: bcrypt.hashSync(form.contrasenia, 10),
+                    fecha_nacimiento : form.fechadenacimiento,
+                    foto : form.foto
+                }
+                return res.redirect(`/users/profile/${idd}`)
+            }).catch((error) => {
+                return console.log(error)
+            })
+        }else {
+            for (let i = 0; i < errors.errors.length; i++) {
+                if (errors.errors[i].path == "contrasenia") {
+                    if (errors.errors[i].value == "") {
+                        let editar_perfil = {
+                            nombre: form.nombre,
+                            apellido: form.apellido,
+                            usuario: form.usuario,
+                            email: form.email,
+                            dni : form.nrodedocumento,
+                            fecha_nacimiento : form.fechadenacimiento,
+                            foto : form.foto
+                        }
+                    
+                    
+                        datos.Usuario.update(editar_perfil, {where: {id: idd}})
+                        .then((result) => {
+                            ///res.send(result)
+                            req.session.user = {
+                                nombre: form.nombre,
+                                apellido: form.apellido,
+                                usuario: form.usuario,
+                                email: form.email,
+                                dni : form.nrodedocumento,
+                                fecha_nacimiento : form.fechadenacimiento,
+                                foto : form.foto
+                            }
+                            return res.redirect(`/users/profile/${idd}`)
+                        }).catch((error) => {
+                            return console.log(error)
+                        })
+                    }
+                } else {
+                    datos.Usuario.findByPk(idd, filtro)
+                    .then(function(result){
+                        //return res.send(result)
+                        if (req.session.user.id == result.id){
+                            
+                            return res.render("profile-edit", {
+                                datos: result, 
+                                errors: errors.mapped(), 
+                                old: req.body
+                            });
+                        }else {
+                            res.send("Solo puedes editar tu propio perfil")
+                        }
+                        
+                    }).catch((err) => {
+                        return console.log(err);
+                    });
+                }
+                
+            } 
+            
+            
+        }
+    
+       
+       
+    },
+
+    editar: function(req, res){
+        let id = req.params.userid;
+        if (req.session.user == undefined){
+            return res.redirect("/users/login")
+            
+        } else{
+            datos.Usuario.findByPk(id)
+            .then(function(result)  {
+                //res.send(result)
+                if (req.session.user.id == result.id){
+                    
+                    return res.render("profile-edit", {datos: result});
+                }else {
+                    res.send("Solo puedes editar tu propio perfil")
+                }
+                
+            }).catch((err) => {
+                return console.log(err);
+            });
+        }
     },
     login: (req, res)=>{
         return res.render("login", {

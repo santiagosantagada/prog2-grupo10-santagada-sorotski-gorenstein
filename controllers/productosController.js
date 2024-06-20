@@ -31,20 +31,24 @@ const productosController= {
     searchresults: function(req, res){
         let qs= req.query.search
         let filtrado = {
-            where: [{nombreProducto: qs}]
+            where: {[Op.or]: 
+                [{nombreProducto: {[Op.like]: `%${qs}%`}},
+                 {descripcion: { [Op.like]: `%${qs}%`}}]
+            },
+            include: [
+            {association: "user"}
+            ],
+            order: [['createdAt', 'DESC']]
         }
 
-        datos.Producto.findOne(filtrado)
+        datos.Producto.findAll(filtrado)
         .then(function(result){
-            if (result != undefined){
-                return res.render("searchresults", {datos: result})
-            } else{
-                return res.send("No hay resultados para su criterio de busqueda")
-        }})
+            return res.render("searchresults", {datos: result, buscador: qs})
+        })
             
-        //}).catch(function(error) {
-        //    return res.send("no existe")
-       // }) ASI LO TENIAMOS ANTES EN VEZ DEL IF ELSE
+        .catch(function(error) {
+           return console.log(error)
+        })
        
     },
     productadd: function(req, res){
@@ -213,7 +217,7 @@ const productosController= {
             datos.Comentario.create(comentario_nuevo)
             .then(function(result) {
                 //res.send(result)
-                return res.redirect(⁠ /product/id/${idd} ⁠)
+                return res.redirect(`/product/id/${idd}`)
             
             }).catch((error) => {
                 return console.log(error)

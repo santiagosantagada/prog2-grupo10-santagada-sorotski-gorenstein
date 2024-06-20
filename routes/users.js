@@ -11,9 +11,9 @@ let validations=[
     .withMessage("Debe completar este campo")
     .bail()
     .isEmail().withMessage("Debe escribir un email").bail()
-    .custom(function(value){ //Verifica que el email no exista.
+    .custom(function(value){ 
         return datos.Usuario.findOne({
-          where: { email: value }, //Usamos el atributo value del campo input.
+          where: { email: value },
         })
           .then(function(user){
             if(user){
@@ -30,20 +30,46 @@ let validations=[
     .isLength({min: 4}).withMessage("La contraseña debe tener al menos 4 caracteres")
 ]
 
+let ProfileEditvalidations=[
+  body("email")
+    .notEmpty()
+    .withMessage("Debe completar este campo")
+    .bail()
+    .isEmail().withMessage("Debe escribir un email").bail()
+    .custom(function(value, {req}){ 
+        return datos.Usuario.findOne({
+          where: { email: value }, 
+        })
+          .then(function(result){
+            if(result){
+              if (req.session.user != undefined && result.id != req.session.user.id)
+              throw new Error('El email ingresado ya existe.');
+            }
+          })
+    }),
+  body("usuario")
+    .notEmpty()
+    .withMessage("Debe completar este campo")
+    .bail(),
+  body("contrasenia")
+    .notEmpty().withMessage("Debe completar este campo").bail()
+    .isLength({min: 4}).withMessage("La contraseña debe tener al menos 4 caracteres")
+]
 
-/* GET users listing. 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});*/
+
+
 
 router.get("/register", usersController.register)
-router.get("/login",usersController.login) 
-router.get("/profile/:userid", usersController.profile)
-router.get("/profileEdit", usersController.profileEdit)
+router.post("/register", validations, usersController.store)
 
+router.get("/login",usersController.login) 
+router.post("/login",usersController.loginUser)
+
+router.get("/profile/:userid", usersController.profile)
+
+router.get("/profileEdit/:userid", usersController.editar)
+router.post("/profileEdit/:userid", ProfileEditvalidations, usersController.profileEdit)
 
 router.post('/logout', usersController.logout)
-router.post("/register", validations, usersController.store)
-router.post("/login",usersController.loginUser)
 
 module.exports = router;

@@ -9,20 +9,26 @@
 			<%- include("./partials/headerLogueado") %>
 		<% }else {%>
 			<%- include("./partials/header") %>
-		<%} %>
+		<% } %>
 
 		<!-- /Header -->
 
 		<!-- Datos del usuario -->
 		<section class="info-usuario container products-wrapper">
 			<div class="row">
-				<div class="img-container offset-3 col-2">
-					<img src="<%=datos.foto%>" alt="foto de perfil" class="foto-perfil">
-				</div>
+				<% if (datos.foto.length == 0) { %>
+					<div class="img-container offset-3 col-2">
+						<img src="/public/images/users/default-image.png" alt="foto de perfil" class="foto-perfil">
+					</div>
+				<% } else { %>
+					<div class="img-container offset-3 col-2">
+						<img src="<%=datos.foto%>" alt="foto de perfil" class="foto-perfil">
+					</div>
+				<% } %>
 				<div class="data-container col-6">
 					<div class="d-flex align-items-center ">
 						<h1 class="main-title"> <%= datos.usuario %>
-							<a href="/users/profileEdit">
+							<a href="/users/profileEdit/<%=datos.id%>">
 								<i class="fas fa-cog"></i>
 							</a>
 						</h1>
