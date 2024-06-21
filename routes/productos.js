@@ -30,7 +30,6 @@ router.get("/searchresults", productosController.searchresults)
 router.get("/editproduct/:productoId",  productosController.showformUpdate)
 router.post("/editproduct/:productoId", validations, productosController.editproduct)
 
-router.get("/delete/:productoId", productosController.delete)
-
+router.post("/borrar/id/:id", productosController.delete)
 
 module.exports= router;

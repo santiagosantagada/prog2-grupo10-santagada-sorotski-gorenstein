@@ -1,68 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
-	<!-- Include Head -->
-	<%- include("./partials/head") %>
+    <!-- Include Head -->
+    <%- include("./partials/head") %>
 
-	<body>
-		<!-- Header -->
-		<% if (locals.user != undefined) { %>
-			<%- include("./partials/headerLogueado") %>
-		<% }else {%>
-			<%- include("./partials/header") %>
-		<%} %>
+    <body>
+        <!-- Header -->
+        <% if (locals.user != undefined) { %>
+            <%- include("./partials/headerLogueado") %>
+        <% } else { %>
+            <%- include("./partials/header") %>
+        <% } %>
+        <!-- /Header -->
 
-		<!-- /Header -->
-		
-
-		<!-- product detail -->
-		
-		<div class="container products-wrapper">
-			<div class="column">
-				<h2 class="products-title"><%=datos.nombreProducto  %></h2> 
-				    
-				<h2><a href="/product/editproduct/<%= datos.id %>" class="hiper">  Editar</a></h2>
-				<h2><a href="/product/delete/<%= datos.id %>" class="hiper">  Borrar</a></h2>
-			</div>
-			<div class="product-detail">
-				<div class="row">
-					<article class="col-12 col-lg-8 product-detail-info">
-						<img src="<%= datos.foto %>" alt="" class="product-detail-img">
-						<p class="product-detail-description"><%=datos.descripcion%> </p>
-					</article>
-					<div class="col-12 col-lg-4">
-						<section class="comments">
-						<% if (datos.comentario && datos.comentario.length > 0) { %>
-							<% for(let i=0; i < 4 ; i++) { %>   
-							<article>
-								<img src="<%=datos.comentario[i].user.foto %>" alt="">
-								<div class="data">
-									<p class="user">
-									<strong> 
-										<a href="/users/profile/<%=datos.comentario[i].user.id%>"> <%=datos.comentario[i].user.usuario%></a> 
-									</strong>
-									<p> <%=datos.comentario[i].textoComentario  %></p>
-								</div>
-							</article>
-							<% } %>
-							<% } else { %>
-								<p>Aún no hay comentarios.</p>
-							<% } %>
-						</section>
-						<form class="form" action="/product" method="get">
-							<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+        <!-- Product Detail -->
+        <div class="container products-wrapper">
+            <div class="column">
+                <h2 class="products-title"><%= datos.nombreProducto %></h2>
+                
+				<% if (locals.user != undefined) { %>
+					<% if (locals.user.id != datos.user.id) { %>
+						<h2>Solo podes editar y borrar un producto que es tuyo </h2>
+					<% } else { %>
+						<h2><a href="/product/editproduct/<%= datos.id %>" class="hiper">Editar</a></h2>
+                		<form action="/product/borrar/id/<%= datos.id %>" method="POST" class="search-form" >
+							<button type="submit" class="enviar">Borrar</i></button>
 						</form>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /product detail -->
+					<% } %>
+				<% } %>
+				
 
-		<!-- footer -->
-		<%- include("./partials/footer") %>
+            </div>
+            <div class="product-detail">
+                <div class="row">
+                    <article class="col-12 col-lg-8 product-detail-info">
+                        <img src="<%= datos.foto %>" alt="" class="product-detail-img">
+                        <p class="product-detail-description"><%= datos.descripcion %></p>
+                        <a href="/users/profile/<%= datos.user.id %>">
+                            <h2 class="product-detail-description">Creado por: <%= datos.user.usuario %></h2>
+                        </a>
+                    </article>
+                    <div class="col-12 col-lg-4">
+                        <section class="comments">
+                            <% if (datos.comentario && datos.comentario.length > 0) { %>
+								<% for(let i =0; i< datos.comentario.length ; i++) {%>
+                                    <article>
+                                        <img src="<%= datos.comentario[i].user.foto %>" alt="">
+                                        <div class="data">
+                                            <p class="user">
+                                                <strong>
+                                                    <a href="/users/profile/<%= datos.comentario[i].user.id %>">
+                                                        <%= datos.comentario[i].user.usuario %>
+                                                    </a>
+                                                </strong>
+                                            </p>
+                                            <p><%= datos.comentario[i].textoComentario %></p>
+                                        </div>
+                                    </article>
+                            <%} } else { %>
+                                <p>Aún no hay comentarios.</p>
+                            <% } %>
+                        </section>
+                        <% if (locals.user != undefined) { %>
+                            <form class="form" action="/product/id/<%= datos.id%>" method="POST">
+                                <input class="form-input" id="textoComentario" name="textoComentario" type="text" value="<%= locals.old != undefined && old.textoComentario ? old.textoComentario : "" %>" placeholder="Agregar comentario">
+                                <% if (locals.errors && errors.textoComentario) { %>
+                                    <p><%= errors.textoComentario.msg %></p>
+                                <% } %>
+                                <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                            </form>
+                        <% } else { %>
+                            <a href="/users/login">
+                                <h2>Debes estar logueado para comentar</h2>
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Product Detail -->
 
-		<!-- /footer -->
+        <!-- Footer -->
+        <%- include("./partials/footer") %>
+        <!-- /Footer -->
 
-	</body>	
+    </body>
 </html>

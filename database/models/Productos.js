@@ -26,6 +26,19 @@ module.exports = function(sequelize, dataTypes) {
         },
         foto: {
             type: dataTypes.STRING
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+            field: "createdAt"
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+            field: "updatedAt"
+        },
+        deletedAt: {
+            type: dataTypes.DATE,
+            field: "deletedAt"
+
         }
     }
    
@@ -42,7 +55,7 @@ module.exports = function(sequelize, dataTypes) {
 
     let Producto = sequelize.define(alias, cols, config);
 
-   Producto.associate = function(models) {
+    Producto.associate = function(models) {
 
         //todas las relaciones
         Producto.belongsTo(models.Usuario, {
@@ -51,7 +64,7 @@ module.exports = function(sequelize, dataTypes) {
         }),
         Producto.hasMany(models.Comentario, {
             as: "comentario",
-            foreignKey: "idAutor"
+            foreignKey: "idProducto"
         })
     }
     

@@ -1,5 +1,6 @@
 const datos= require("../database/models")
 const bcrypt=require("bcryptjs")
+const {Op} = require("sequelize")
 const {Association} = require("sequelize")
 const {validationResult} = require("express-validator")
 
@@ -7,14 +8,17 @@ const {validationResult} = require("express-validator")
 const productosController= {
     product: function(req, res){
         let idProducto = req.params.idProducto;
-
+        
         let filtrado = {
             include: [
-                {association: "user"},
-                {association: "comentario",
-                    include: [{association: "user"}]}
-        ]
-        }   
+                { association: "user" },
+                { 
+                    association: "comentario",
+                    include: [{ association: "user" }],
+                    order: [['createdAt', 'DESC']] 
+                },
+            ]
+        }
         
         datos.Producto.findByPk(idProducto, filtrado)
         .then(function(result) {
@@ -24,7 +28,6 @@ const productosController= {
         .catch(function(error) {
             return console.log(error);;
         });
-        //return res.render("product", {datos: datos.productos})
           
     },
 
@@ -168,40 +171,46 @@ const productosController= {
 
 
     },
-    delete:function(req,res){
-        let idd = req.params.productoId
+    delete: function(req, res) {
+        let idd = req.params.id;
         let filtro = {
             include: [
-            {association: "user"},
-            {
-                association: "comentario", 
-                include:[{ association: "user"}]
+                { association: "user" },
+                {
+                    association: "comentario", 
+                    include: [{ association: "user" }]
+                }
+            ]
+        };
+    
+        let filtrado = {
+            where: { id: idd }
+        };
+        
+        datos.Producto.findByPk(idd, filtro)
+        .then(function(result) {
+            if (req.session.user.id == result.idUsuario) {
+                
+                datos.Comentario.destroy({
+                    where: { idProducto: idd }
+                })
+
+                datos.Producto.destroy(filtrado)
+                .then(function() {
+                    return res.redirect("/");
+                })
+                .catch(function(error) {
+                    return console.log(error);
+                });
+            } else {
+                res.send("Solo puedes borrar un producto que sea tuyo");
             }
-        ]
-    }
-
-    datos.Producto.findByPk(idd, filtro)
-    .then(function(result){
-        //res.send(result)
-        if (req.session.user.id == result.idUsuario){
-            datos.Producto.destroy({
-                where: {id: idd}
-            })
-            .then(function(){
-                return res.redirect("/");
-
-            })
-            .catch(function(error){
-                return console.log(error)
-            })
-        } else {
-            res.send("Solo podes borrar un producto que sea tuyo")
-        }
-    })
-    .catch(function(error){
-        return console.log(error)
-    })
+        })
+        .catch(function(error) {
+            return console.log(error);
+        });
     },
+
     comentario: function(req,res){
         let idd = req.params.idProducto;
         let errors = validationResult(req)

@@ -211,7 +211,16 @@ const usersController= {
             //return res.send(check)
             if(result){
                 if(check){
-                req.session.user=result
+                req.session.user = {
+                    id: result.id,
+                    nombre: result.nombre,
+                    apellido: result.apellido,
+                    usuario: result.usuario,
+                    email: result.email,
+                    dni : result.nrodedocumento,
+                    fecha_nacimiento : result.fechadenacimiento,
+                    foto : result.foto,
+                }
                 if(form.rememberme) {//!= undefined)
                     res.cookie("userId", result.id, {maxAge: 1000 * 60 * 15})
                 }
