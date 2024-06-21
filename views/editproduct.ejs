@@ -15,14 +15,12 @@
 		<%} %>
 	
 
-		<!-- Novedades -->
-		<div class="container products-wrapper">
+=		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Modificar producto</h2>
+					<h2 class="login">Modificar producto</h2>
 				</div>
-				<!-- Show the "ultimos" products -->
-				<h2 class="col-12"> 
+				<h2 > 
 					<form action="/product/editproduct/<%= datos.id%>" method="POST" class="search-form" >
 						<input type="text" name="foto" placeholder="<%= datos.foto %>" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
 						<% if (locals.errors && errors.foto) { %>

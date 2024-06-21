@@ -15,32 +15,29 @@
 		<%} %>
 	
 
-		<!-- Novedades -->
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Agregar productos</h2>
+					<h2 class="login">Agregar productos</h2>
 				</div>
-				<!-- Show the "ultimos" products -->
-				<div class="col-12"> 
-					<form action="/product/productadd" method="POST" class="search-form" >
-						<input type="text" name="foto" placeholder="Imagen" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
-						<% if (locals.errors && errors.foto) { %>
-							<p><%= errors.foto.msg %></p>
-						   <% } %>
-						<input type="text" name="nombreProducto" placeholder="Nombre del producto" class="formulario" value="<%=locals.old != undefined && old.nombreProducto ? old.nombreProducto:""%>">
-						<% if (locals.errors && errors.nombreProducto) { %>
-							<p><%= errors.nombreProducto.msg %></p>
-						   <% } %>
-						<input type="text" name="descripcion" placeholder="Descripción" class="formulario" value="<%=locals.old != undefined && old.descripcion ? old.descripcion:""%>">
-						<% if (locals.errors && errors.descripcion) { %>
-							<p><%= errors.descripcion.msg %></p>
-						   <% } %>
+					<h2>
+						<form action="/product/productadd" method="POST" class="search-form" >
+							<input type="text" name="foto" placeholder="Imagen" class="formulario" value="<%=locals.old != undefined && old.foto ? old.foto:""%>">
+							<% if (locals.errors && errors.foto) { %>
+								<p><%= errors.foto.msg %></p>
+							<% } %>
+							<input type="text" name="nombreProducto" placeholder="Nombre del producto" class="formulario" value="<%=locals.old != undefined && old.nombreProducto ? old.nombreProducto:""%>">
+							<% if (locals.errors && errors.nombreProducto) { %>
+								<p><%= errors.nombreProducto.msg %></p>
+							<% } %>
+							<input type="text" name="descripcion" placeholder="Descripción" class="formulario" value="<%=locals.old != undefined && old.descripcion ? old.descripcion:""%>">
+							<% if (locals.errors && errors.descripcion) { %>
+								<p><%= errors.descripcion.msg %></p>
+							<% } %>
 
-						<button type="submit" class="enviar">Enviar</i></button>
-					</form>
-
-				</div>
+							<button type="submit" class="enviar">Enviar</i></button>
+						</form>
+					</h2>
 			</div>
 		</div>
 

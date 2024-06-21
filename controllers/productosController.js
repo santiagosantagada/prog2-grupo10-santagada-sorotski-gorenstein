@@ -14,11 +14,11 @@ const productosController= {
                 { association: "user" },
                 { 
                     association: "comentario",
-                    include: [{ association: "user" }],
-                    order: [['createdAt', 'DESC']] 
-                },
-            ]
-        }
+                    include: [{ association: "user" }]
+                }
+            ],
+            order: [[{ model: datos.Comentario, as: 'comentario' }, 'createdAt', 'DESC']]
+        };
         
         datos.Producto.findByPk(idProducto, filtrado)
         .then(function(result) {

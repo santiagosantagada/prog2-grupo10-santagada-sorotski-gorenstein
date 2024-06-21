@@ -2,7 +2,7 @@
 <html lang="es">
 	<!-- include Head -->
 	<%- include("./partials/head") %>
-
+    <!-- include Header -->
 	<% if (locals.user != undefined) { %>
 		<%- include("./partials/headerLogueado") %>
 	<% }else {%>
@@ -10,18 +10,13 @@
 	<%} %>
 
 	<body>
-		<!-- Header -->
-
-		<!-- /Header -->
-
-		<!-- Novedades -->
+		
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Editar mi perfil</h2>
+					<h2 class="login">Editar mi perfil</h2>
 				</div>
-				<!-- Show the "ultimos" products -->
-				<h2 class="col-12"> 
+				<h2 > 
 					<form action="/users/profileEdit/<%=datos.id%>" method="POST" class="search-form" >
 						<input type="text" name="nombre" placeholder="<%=datos.nombre  %>" class="formulario">
 					<input type="text" name="apellido" placeholder="<%=datos.apellido%>" class="formulario">

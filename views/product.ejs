@@ -15,18 +15,9 @@
         <!-- Product Detail -->
         <div class="container products-wrapper">
             <div class="column">
-                <h2 class="products-title"><%= datos.nombreProducto %></h2>
+                <h2 class="login "><%= datos.nombreProducto %></h2>
                 
-				<% if (locals.user != undefined) { %>
-					<% if (locals.user.id != datos.user.id) { %>
-						<h2>Solo podes editar y borrar un producto que es tuyo </h2>
-					<% } else { %>
-						<h2><a href="/product/editproduct/<%= datos.id %>" class="hiper">Editar</a></h2>
-                		<form action="/product/borrar/id/<%= datos.id %>" method="POST" class="search-form" >
-							<button type="submit" class="enviar">Borrar</i></button>
-						</form>
-					<% } %>
-				<% } %>
+				
 				
 
             </div>
@@ -44,7 +35,7 @@
                             <% if (datos.comentario && datos.comentario.length > 0) { %>
 								<% for(let i =0; i< datos.comentario.length ; i++) {%>
                                     <article>
-                                        <img src="<%= datos.comentario[i].user.foto %>" alt="">
+                                        <img src="<%= datos.comentario[i].user.foto %>" alt="" class="foto">
                                         <div class="data">
                                             <p class="user">
                                                 <strong>
@@ -76,6 +67,16 @@
                     </div>
                 </div>
             </div>
+			<% if (locals.user != undefined) { %>
+				<% if (locals.user.id != datos.user.id) { %>
+					<h2 class="editar">Solo podes editar y borrar un producto que es tuyo </h2>
+				<% } else { %>
+					<h2><a href="/product/editproduct/<%= datos.id %>" class="editar" >Editar</a></h2>
+					<form action="/product/borrar/id/<%= datos.id %>" method="POST" class="borrar" >
+						<button type="submit" class="enviar">Borrar</i></button>
+					</form>
+				<% } %>
+			<% } %>
         </div>
         <!-- /Product Detail -->
 

@@ -15,33 +15,33 @@
 
 		<!-- /Header -->
 
-		<!-- Novedades -->
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title">Registrate</h2>
+					<h2 class="login">Registrate</h2>
 				</div>
-				<!-- Show the "ultimos" products -->
-				<form action="/users/register" method="POST" class="search-form">
-					<input type="text" name="nombre" placeholder="Nombre" class="formulario">
-					<input type="text" name="apellido" placeholder="Apellido" class="formulario">
-					<input id="email" type="email" name="email" placeholder="Email" class="formulario" value="<%=locals.old != undefined && old.email ? old.email:""%>">
-					<% if (locals.errors && errors.email) { %>
-						<p><%= errors.email.msg %></p>
-					   <% } %>
-					<input id="usuario" type="text" name="usuario" placeholder="Usuario" class="formulario"  value="<%=locals.old != undefined && old.usuario ? old.usuario:""%>">
-					<% if (locals.errors && errors.usuario) { %>
-						<p><%= errors.usuario.msg %></p>
-					   <% } %>
-					<input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña" class="formulario" value="<%=locals.old != undefined && old.contrasenia ? old.contrasenia:""%>">
-					<% if (locals.errors && errors.contrasenia) { %>
-						<p><%= errors.contrasenia.msg %></p>
-					   <% } %>
-					<input id="fechaNacimiento" type="date" name="fechadenacimiento" placeholder="Fecha de nacimiento" class="formulario">
-					<input id="numeroDocumento" type="number" name="nrodedocumento" placeholder="DNI" class="formulario">
-					<input id="foto" type="text" name="foto" placeholder="Foto de perfil" class="formulario">
-					<button type="submit" class="enviar">Enviar</button>
-				</form>
+				<h2>
+					<form action="/users/register" method="POST" class="search-form">
+						<input type="text" name="nombre" placeholder="Nombre" class="formulario">
+						<input type="text" name="apellido" placeholder="Apellido" class="formulario">
+						<input id="email" type="email" name="email" placeholder="Email" class="formulario" value="<%=locals.old != undefined && old.email ? old.email:""%>">
+						<% if (locals.errors && errors.email) { %>
+							<p><%= errors.email.msg %></p>
+						<% } %>
+						<input id="usuario" type="text" name="usuario" placeholder="Usuario" class="formulario"  value="<%=locals.old != undefined && old.usuario ? old.usuario:""%>">
+						<% if (locals.errors && errors.usuario) { %>
+							<p><%= errors.usuario.msg %></p>
+						<% } %>
+						<input id="contrasenia" type="password" name="contrasenia" placeholder="Contraseña" class="formulario" value="<%=locals.old != undefined && old.contrasenia ? old.contrasenia:""%>">
+						<% if (locals.errors && errors.contrasenia) { %>
+							<p><%= errors.contrasenia.msg %></p>
+						<% } %>
+						<input id="fechaNacimiento" type="date" name="fechadenacimiento" placeholder="Fecha de nacimiento" class="formulario">
+						<input id="numeroDocumento" type="number" name="nrodedocumento" placeholder="DNI" class="formulario">
+						<input id="foto" type="text" name="foto" placeholder="Foto de perfil" class="formulario">
+						<button type="submit" class="enviar">Enviar</button>
+					</form>
+				</h2>
 			</div>
 		</div>
 			

@@ -17,24 +17,71 @@
 }
 .checkbox{
   height: 40px;
-  width: 40px;
+  width: 30px;
+  
 }
+
+.borrar{
+  
+    background-color: darkslategray;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  
+}
+.foto{
+  border-style: outset;
+  border-color: blue;
+}
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center;
+}
+
+.perfil{
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center;
+  background-color: darkgrey;
+}
+/* .col-12 {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  justify-content: center;
+  display: flex;
+} */
 
 .saludo{
   font-size: xx-large;
 }
 
-.formulario{
+.formulario {
   margin: 6px;
   padding: 5px;
   height: 40px;
-  width: 130px;
- 
+  width: 300px;
+  border-style: outset;
+  border-radius: 15px;
+}
+
+
+.saludo{
+  font-size: xx-large;
 }
 
 .Recordarme{
   font-size: medium;
-  color: #666666;
+  color: black;
 }
 
 .NOMBRE{
@@ -47,27 +94,41 @@
 .enviar{
   margin: 10px;
   padding: 5px;
+  border-radius: 15px;
   height: 40px;
-  width:fit-content;
+  width: 100px;
 }
 
+
+
 .enviar:hover{
-  text-decoration: underline;
-  border-color: blue;
-  color: blue;
+  background-color: red;
+  color: white;
+  text-decoration-color: white;
 }
+
 /*====== Basics ======*/
 * {
   box-sizing: border-box;
 }
 
 .hiper {
-  text-decoration: underline;
+  text-decoration:underline;
 }
 .hiper:hover {
   color: blue;
 }
-
+.editar{
+  background-color: darkslategray;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  color: white;
+}
+.editar:hover{
+  color:red;
+}
 html,
 body {
   min-height: 100vh;
@@ -76,6 +137,7 @@ body {
 }
 
 body {
+
   font-family: var(--base-font-family);
   font-weight: 300;
   background-color: lightgrey;
@@ -132,13 +194,25 @@ hr {
 }
 
 .search-form {
+  background-color: darkgrey;
   position: relative;
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  border-radius: 15px;
+  padding: 10px;
+
 }
 
+.search{
+  background-color: darkgrey;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 .search-form_input {
   border: solid 1px var(--light-gray);
   display: block;
@@ -214,13 +288,23 @@ hr {
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+
 }
 
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: black;
   font-family: 'Times New Roman', serif;
+}
+
+.login{
+  font-size: 2.4em;
+  font-weight: 400;
+  color: black;
+  font-family: 'Times New Roman', serif;
+  display: flex;
+  justify-content: center;
 }
 
 .product-box {
@@ -229,6 +313,8 @@ hr {
   overflow: hidden;
   transition: 300ms;
   margin: 20px 0;
+  border-style: outset;
+  border-color: #03264C;
 }
 
 .product-box a {
@@ -358,6 +444,8 @@ hr {
   width: 70%;
   display: block;
   margin: auto;
+  border-style: outset;
+  border-color: #03264C;
 }
 
 .product-detail-info {
@@ -517,6 +605,8 @@ textarea.form-input {
 
 .foto-perfil{
   border-radius: 50%;
+  border-color: #03264C;
+  border-style: outset;
 }
 
 .main-title{

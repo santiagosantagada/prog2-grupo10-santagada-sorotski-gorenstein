@@ -5,7 +5,7 @@ USE data_3;
 CREATE TABLE usuarios (
 /* 	nombreColumna 		tipoDato 		Restricciones */
     id 					INT 			UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    nombre 				VARCHAR(250) 	NOT NULL,
+    nombre 				VARCHAR(250) 	NULL,
     apellido 			VARCHAR(250) 	NULL,
     email 				VARCHAR(250) 	NOT NULL,
     usuario 			VARCHAR(250) 	NOT NULL,
