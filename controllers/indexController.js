@@ -22,9 +22,7 @@ const indexController= {
             return console.log(error)
         })
         
-        /*return res.render("index", {
-            datos: datos
-        })*/
+       
     }
 }
 module.exports= indexController

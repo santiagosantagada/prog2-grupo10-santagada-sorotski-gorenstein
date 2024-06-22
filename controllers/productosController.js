@@ -14,10 +14,11 @@ const productosController= {
                 { association: "user" },
                 { 
                     association: "comentario",
-                    include: [{ association: "user" }]
+                    include: [{ association: "user" }],
+                    separate: true, 
+                    order: [['createdAt', 'DESC']]
                 }
-            ],
-            order: [[{ model: datos.Comentario, as: 'comentario' }, 'createdAt', 'DESC']]
+            ]
         };
         
         datos.Producto.findByPk(idProducto, filtrado)
@@ -93,11 +94,8 @@ const productosController= {
         let form = req.body
         let filtro = {
             include: [
-                {association: "user"},
-                {
-                    association: "comentario", 
-                    include:[{ association: "user"}]
-                }
+                {association: "user"}
+                
             ]}
 
         if (errors.isEmpty()) {
@@ -142,11 +140,8 @@ const productosController= {
         let id = req.params.productoId;
         let filtro = {
             include: [
-                {association: "user"},
-                {
-                    association: "comentario", 
-                    include:[{ association: "user"}]
-                }
+                {association: "user"}
+                
             ]
         }
         if (req.session.user == undefined){

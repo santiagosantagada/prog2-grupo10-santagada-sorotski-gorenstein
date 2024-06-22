@@ -29,6 +29,7 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    border-radius: 10px;
   
 }
 .foto{
@@ -53,6 +54,8 @@
   margin-left: -15px;
   justify-content: center;
   background-color: darkgrey;
+  border-radius: 10px;
+  flex-direction: row-reverse;
 }
 /* .col-12 {
   -ms-flex: 0 0 100%;
@@ -125,6 +128,7 @@
   height: 50px;
   align-items: center;
   color: white;
+  border-radius: 10px;
 }
 .editar:hover{
   color:red;

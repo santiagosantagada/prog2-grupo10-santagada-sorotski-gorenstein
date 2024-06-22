@@ -27,8 +27,7 @@ const usersController= {
             
     
             datos.Usuario.create(user)
-            .then((result)=>{
-                req.session.user = result
+            .then(()=>{
                 return res.redirect("/users/login")
             }).catch((error)=>{
                 return console.log(error)
@@ -49,9 +48,11 @@ const usersController= {
         let id = req.params.userid
         let filtro = {
             include: [
-                {association: "product"}
+                {association: "product"},
             ],
-            order: [['createdAt', 'DESC']]
+            order: [
+                ['createdAt', 'DESC'] 
+            ]
         }
        
         datos.Usuario.findByPk(id, filtro)
@@ -68,11 +69,7 @@ const usersController= {
         let idd = req.params.userid;
         let errors = validationResult(req);
         let form = req.body
-        let filtro = {
-            include: [
-                {association: "product"},
-            ]}
-        //return res.send(errors)
+        
 
         if (errors.isEmpty()) {
             
@@ -142,7 +139,7 @@ const usersController= {
                         })
                     }
                 } else {
-                    datos.Usuario.findByPk(idd, filtro)
+                    datos.Usuario.findByPk(idd)
                     .then(function(result){
                         //return res.send(result)
                         if (req.session.user.id == result.id){
