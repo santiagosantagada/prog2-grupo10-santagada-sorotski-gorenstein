@@ -55,7 +55,7 @@
   justify-content: center;
   background-color: darkgrey;
   border-radius: 10px;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 /* .col-12 {
   -ms-flex: 0 0 100%;

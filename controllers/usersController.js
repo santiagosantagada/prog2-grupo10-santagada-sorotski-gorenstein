@@ -50,9 +50,7 @@ const usersController= {
             include: [
                 {association: "product"},
             ],
-            order: [
-                ['createdAt', 'DESC'] 
-            ]
+            order: [["product", "createdAt", "DESC"]]
         }
        
         datos.Usuario.findByPk(id, filtro)
