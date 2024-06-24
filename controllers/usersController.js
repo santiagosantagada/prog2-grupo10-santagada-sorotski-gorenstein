@@ -190,9 +190,7 @@ const usersController= {
         }
     },
     login: (req, res)=>{
-        return res.render("login", {
-          
-        })
+        return res.render("login")
     },
     loginUser:(req,res)=>{
         let form=req.body
